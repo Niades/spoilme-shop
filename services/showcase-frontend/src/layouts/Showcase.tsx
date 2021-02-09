@@ -10,9 +10,15 @@ interface ShowcaseProps {
 };
 
 const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   background-color: ${props => props.theme.color.header};
+  z-index: 999;
 `;
 
 const Logo = styled.div`
@@ -33,7 +39,9 @@ const FooterLink = styled.div`
   padding: 10px 0;
 `;
 
-const ContentContainer = styled.div``;
+const ContentContainer = styled.div`
+  padding-top: 58px;
+`;
 
 // Layout container
 const Container = (props: ContainerProps) => {
