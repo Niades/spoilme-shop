@@ -1,6 +1,6 @@
 FROM node:12-alpine as build
 WORKDIR /app
-COPY ./showcase-frontend/yarn.lock /app/package.json
+COPY ./showcase-frontend/yarn.lock /app/yarn.lock
 COPY ./showcase-frontend/package.json /app/package.json
 RUN yarn install
 COPY ./showcase-frontend/ /app/
