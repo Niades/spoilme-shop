@@ -1,11 +1,11 @@
 {
-    "table": "User",
-    "rows": [
-        {
-            "firstName": "Valerie",
-            "lastName": "Ivanova",
-            "username": "valerie",
-            "profileDescription": "hi welcome to my wishlist"
-        }
-    ]
+  "table": "User",
+  "rows": [
+    {
+      "firstName": "Valerie",
+      "lastName": "Ivanova",
+      "username": "valerie",
+      "profileDescription": "hi welcome to my wishlist"
+    }
+  ]
 }
