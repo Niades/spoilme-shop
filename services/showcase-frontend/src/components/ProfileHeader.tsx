@@ -1,5 +1,12 @@
 import styled from "@emotion/styled";
+import Skeleton from "@material-ui/lab/Skeleton";
 import MikuruAvatar from "../assets/images/mikuru.jpeg";
+
+
+interface ProfileHeaderProps {
+  username: string,
+  description: string|undefined,
+};
 
 const Container = styled.div`
   position: relative;
@@ -14,6 +21,7 @@ const Container = styled.div`
     'AVATAR DESCRIPTION'
   ;
 `;
+
 const Avatar = styled.img`
   position: absolute;
   top: -10px;
@@ -22,31 +30,43 @@ const Avatar = styled.img`
   border-radius: 75px;
   border: 3px solid white;
 `;
+
 const AvatarPlaceholder = styled.div`
   grid-area: AVATAR;
   width: 150px;
   height: 130px;
 `;
+
 const UsernameTitle = styled.div`
   grid-area: USERNAME;
   font-size: 24px;
   align-self: center;
 `;
+
 const Description = styled.div`
   grid-area: DESCRIPTION;
   padding-right: 15px;
 `;
 
-const ProfileHeader = () => {
+const ProfileHeader = (props: ProfileHeaderProps) => {
+  const { username, description } = props;
   return (
     <Container>
       <AvatarPlaceholder />
       <Avatar src={MikuruAvatar}/>
       <UsernameTitle>
-        @mikuru
+        @{username}
       </UsernameTitle>
       <Description>
-        Welcome to my wishlist daddy UwU I’ve been a good girl please spoil me ^_^
+        {description === undefined &&
+          <div>
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+          </div>
+        }
+        {description !== undefined &&
+          description
+        }
       </Description>
     </Container>
   );

@@ -5,7 +5,7 @@ interface ContainerProps {
   children: React.ReactNode,
 };
 
-interface ShowcaseProps {
+interface DefaultLayoutProps {
   children: React.ReactNode,
 };
 
@@ -52,7 +52,7 @@ const Container = (props: ContainerProps) => {
 const Header = () => {
   return (
     <Nav>
-      <Logo>wishlist.shop</Logo>
+      <Logo>Spoil Me Shop</Logo>
     </Nav>
   );
 };
@@ -74,8 +74,8 @@ const Footer = () => {
   );
 };
 
-// Showcase
-const ShowcaseLayout = (props: ShowcaseProps) => {
+// Default
+const DefaultLayout = (props: DefaultLayoutProps) => {
   return (
     <Container>
       <Header/>
@@ -88,5 +88,5 @@ const ShowcaseLayout = (props: ShowcaseProps) => {
 };
 
 export {
-  ShowcaseLayout,
+  DefaultLayout,
 };

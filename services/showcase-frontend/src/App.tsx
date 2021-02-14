@@ -1,14 +1,23 @@
-import './App.css';
-import { ShowcaseLayout } from "./layouts/Showcase";
-import { ProfileHeader } from "./components/ProfileHeader";
-import { ProductList } from "./components/ProductsList";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { DefaultLayout } from "./layouts/Default";
+import UserShowcase from "./pages/user-showcase";
 
 function App() {
   return (
-    <ShowcaseLayout>
-      <ProfileHeader />
-      <ProductList />
-    </ShowcaseLayout>
+    <Router>
+      <DefaultLayout>
+        <Switch>
+          <Route
+            path="/:username"
+            children={(<UserShowcase />)}
+          />
+        </Switch>
+      </DefaultLayout>
+    </Router>
   );
 }
 
