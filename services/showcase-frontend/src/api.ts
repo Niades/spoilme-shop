@@ -3,10 +3,18 @@ import ky from "ky";
 const API_ROOT = "http://localhost:3005";
 const API_PREFIX = "/api/v1/";
 
+export interface Product {
+  name: string,
+  description: string,
+  price: number,
+  image: string,
+};
+
 export interface UserInfo {
   id: number,
   username: string,
   profileDescription: string,
+  Products: Product[],
 }
 
 function getUserInfo(username: string): Promise<UserInfo> {

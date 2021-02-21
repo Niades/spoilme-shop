@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
-import iPad from "../assets/images/ipad.png";
+import { Product } from "../api";
+
+
+interface ProductBlockProps {
+  product: Product,
+};
+
+interface ProductListProps {
+  products: Product[] | undefined,
+};
 
 const ProductContainer = styled.div`
   display: grid;
@@ -40,15 +49,16 @@ const BuyButton = styled.button`
 
 const ProductListContainer = styled.div``;
 
-const Product = () => {
+const ProductBlock = (props: ProductBlockProps) => {
+  const { product } = props;
   return (
     <ProductContainer>
-      <ProductImage src={iPad}/>
+      <ProductImage src={product.image}/>
       <ProductTitle>
-        Apple iPad Pro Wi-Fi (2020), 11", 128 GB, grey
+        {product.name}
       </ProductTitle>
       <ProductPrice>
-        $899.99
+        {product.price}
       </ProductPrice>
       <BuyButton>
         Buy Gift
@@ -57,14 +67,22 @@ const Product = () => {
   )
 };
 
-const ProductList = () => {
-  return (
-    <ProductListContainer>
-      <Product />
-      <Product />
-      <Product />
-    </ProductListContainer>
-  )
+const ProductList = (props: ProductListProps) => {
+  const { products } = props;
+  if(products !== undefined) {
+    return (
+      <ProductListContainer>
+        {
+          products.map((product) => <ProductBlock product={product} />)
+        }
+      </ProductListContainer>
+    );
+  } else {
+    return (
+      <ProductListContainer>
+      </ProductListContainer>
+    );
+  }
 };
 
 export {
