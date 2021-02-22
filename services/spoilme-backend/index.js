@@ -1,5 +1,6 @@
 const fastify = require("fastify");
 const db = require("./db");
+const { refreshAllProducts } = require("./scraping");
 
 const app = fastify({
   logger: true,
@@ -41,4 +42,6 @@ app.get('/api/v1/user', getUserOpts, function(request) {
   })
 });
 
-app.listen(3005);
+app.listen(3005, () => {
+  setTimeout(() => refreshAllProducts(), 5000);
+});

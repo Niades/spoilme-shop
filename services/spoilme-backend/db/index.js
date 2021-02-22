@@ -4,26 +4,30 @@ const connection = require("./connection");
 // Models
 require("./models");
 
+const RESET_DB_ON_START = true;
+
 async function loadFixtures(conn) {
   const fixtureFiles = (fs.readdirSync(path.join(__dirname, "./fixtures")));
-  fixtureFiles.forEach(async (fixtureFile) => {
+  for(const fixtureFile of fixtureFiles) {
     const fixtures = JSON.parse(fs.readFileSync(path.join(__dirname, "./fixtures", fixtureFile)));
-    fixtures.forEach(async (fixture) => {
+    for(const fixture of fixtures) {
       const model = conn.models[fixture.table];
-      fixture.rows.forEach(async (row) => {
+      for(const row of fixture.rows) {
         await model.create(row);
-      });
-      console.log("Fixture", fixtureFile, "loaded")
-    });
-  });
+      }
+    }
+    console.log("Fixture", fixtureFile, "loaded")
+  }
 }
 
 async function init() {
   console.log("Initializing database module")
   try {
     await connection.authenticate();
-    await connection.sync({ force: true });
-    await loadFixtures(connection);
+    await connection.sync({ force: RESET_DB_ON_START });
+    if(RESET_DB_ON_START) {
+      await loadFixtures(connection);
+    }
     console.log("Success")
   } catch(error) {
     console.error("Unable to connect to the database", error);

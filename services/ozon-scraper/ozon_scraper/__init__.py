@@ -1,1 +1,0 @@
-from .ozon_scraper import OzonScraper

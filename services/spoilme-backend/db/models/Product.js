@@ -1,7 +1,13 @@
 const { DataTypes } = require("sequelize");
 const db = require("../connection");
 
+const SCRAPED_AT_DEFAULT = '2010-04-20 00:00';
+
 const Product = db.define('Product', {
+  source: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -21,6 +27,10 @@ const Product = db.define('Product', {
   instock: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
+  },
+  scrapedAt: {
+    type: DataTypes.DATE,
+    defaultValue: new Date(SCRAPED_AT_DEFAULT)
   }
 });
 
