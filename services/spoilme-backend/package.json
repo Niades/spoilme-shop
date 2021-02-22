@@ -7,11 +7,11 @@
   "private": true,
   "dependencies": {
     "@google-cloud/translate": "^6.1.0",
-    "debug": "^4.3.1",
+    "@ladjs/graceful": "^1.0.5",
+    "bree": "^6.2.0",
     "fastify": "^3.12.0",
     "fastify-cors": "^5.2.0",
     "got": "^11.8.1",
-    "jsdom": "^16.4.0",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "puppeteer": "^7.1.0",

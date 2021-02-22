@@ -18,6 +18,7 @@ class Scraper {
   }
 
   async scrapeOzon(url) {
+    await this.launchPromise;
     log("scraping ozon url: ", url);
     const page = await this.browser.newPage();
     await page.setUserAgent(USER_AGENT);
@@ -48,4 +49,5 @@ async function scrapeFromSource(source) {
 
 module.exports = {
   scrapeFromSource,
+  ScraperSingleton,
 };

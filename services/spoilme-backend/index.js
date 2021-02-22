@@ -1,47 +1,31 @@
 const fastify = require("fastify");
-const db = require("./db");
-const { refreshAllProducts } = require("./scraping");
+const Graceful = require("@ladjs/graceful");
+const Bree = require("bree");
+const log = require("./util/log").createLogger("index");
 
-const app = fastify({
-  logger: true,
-});
-
+// Fastify
+const app = fastify();
 app.register(require("fastify-cors"), {
   origin: "*"
 });
+// - API endpoints
+require('./api').addToApp(app);
 
-const getUserOpts = {
-  schema: {
-    querystring: {
-      type: "object",
-      properties: {
-        username: { type: "string" }
-      },
-      required: [ "username" ]
+// Bree
+const bree = new Bree({
+  jobs: [
+    {
+      name: 'refresh-all-products',
+      timeout: '10s'
     }
-  },
-  response: {
-    201: {
-      type: 'object',
-      properties: {
-        id: { type: 'number' },
-        username: { type: 'string' },
-        profileDescription: { type: 'string' }
-      }
-    }
-  }
-}
-
-app.get('/api/v1/user', getUserOpts, function(request) {
-  return db.models.User.findOne({
-    where: { username: request.query.username },
-    include: [ db.models.Product ],
-    attributes: {
-      exclude: ['firstName', 'lastName', 'updatedAt', 'createdAt'],
-    },
-  })
+  ]
 });
 
-app.listen(3005, () => {
-  setTimeout(() => refreshAllProducts(), 5000);
-});
+// Graceful
+const graceful = new Graceful({ servers: [app], brees: [bree] });
+
+// Start
+graceful.listen();
+bree.start();
+app.listen(3005);
+log("Everything started.");

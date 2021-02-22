@@ -7,7 +7,6 @@ const log = require("../util/log").createLogger("scraping-index");
 const SCRAPED_TTL_MINUTES = 60;
 
 function isExpired(scrapedAt) {
-  return true;
   let expiresAt = new Date(scrapedAt);
   expiresAt.setMinutes(expiresAt.getMinutes() + SCRAPED_TTL_MINUTES);
   const now = new Date();

@@ -3,8 +3,12 @@ const path = require("path");
 const connection = require("./connection");
 // Models
 require("./models");
+const log = require("../util/log").createLogger("db");
 
-const RESET_DB_ON_START = true;
+const RESET_DB_ON_START = false;
+if(RESET_DB_ON_START) {
+  log("[!] Resetting DB because RESET_DB_ON_START=true");
+}
 
 async function loadFixtures(conn) {
   const fixtureFiles = (fs.readdirSync(path.join(__dirname, "./fixtures")));
@@ -16,19 +20,19 @@ async function loadFixtures(conn) {
         await model.create(row);
       }
     }
-    console.log("Fixture", fixtureFile, "loaded")
+    log("Fixture", fixtureFile, "loaded")
   }
 }
 
 async function init() {
-  console.log("Initializing database module")
+  log("Initializing database module")
   try {
     await connection.authenticate();
     await connection.sync({ force: RESET_DB_ON_START });
     if(RESET_DB_ON_START) {
       await loadFixtures(connection);
     }
-    console.log("Success")
+    log("Success")
   } catch(error) {
     console.error("Unable to connect to the database", error);
   }
