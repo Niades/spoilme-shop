@@ -4,10 +4,12 @@ import { Product } from "../api";
 
 interface ProductBlockProps {
   product: Product,
+  onClick: (product: Product) => void,
 };
 
 interface ProductListProps {
   products: Product[] | undefined,
+  onProductClick: (product: Product) => void,
 };
 
 const ProductContainer = styled.div`
@@ -50,17 +52,17 @@ const BuyButton = styled.button`
 const ProductListContainer = styled.div``;
 
 const ProductBlock = (props: ProductBlockProps) => {
-  const { product } = props;
+  const { product, onClick } = props;
   return (
     <ProductContainer>
       <ProductImage src={product.image}/>
-      <ProductTitle>
+      <ProductTitle> 
         {product.name}
       </ProductTitle>
       <ProductPrice>
         {product.price}
       </ProductPrice>
-      <BuyButton>
+      <BuyButton onClick={() => onClick(product)}>
         Buy Gift
       </BuyButton>
     </ProductContainer>
@@ -68,12 +70,17 @@ const ProductBlock = (props: ProductBlockProps) => {
 };
 
 const ProductList = (props: ProductListProps) => {
-  const { products } = props;
+  const { products, onProductClick } = props;
   if(products !== undefined) {
     return (
       <ProductListContainer>
         {
-          products.map((product) => <ProductBlock product={product} />)
+          products.map((product) => (
+            <ProductBlock
+              product={product} 
+              onClick={onProductClick}
+            />
+          ))
         }
       </ProductListContainer>
     );

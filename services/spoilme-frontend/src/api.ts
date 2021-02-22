@@ -4,6 +4,7 @@ const API_ROOT = "http://localhost:3005";
 const API_PREFIX = "/api/v1/";
 
 export interface Product {
+  id: number,
   name: string,
   description: string,
   price: number,
