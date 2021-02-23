@@ -1,7 +1,14 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { OrderProducts } from "./OrderProducts";
+import { PaymentMethodSelect } from "./PaymentMethodSelect";
+import { ShippingAddress } from "./ShippingAddress";
+import { Contacts } from "./Contacts";
+
+interface OrderURLParams {
+  username: string,
+  productId: string,
+};
 
 const OrderTitle = styled.div`
   font-size: 20px;
@@ -10,8 +17,8 @@ const OrderTitle = styled.div`
 `;
 
 const Separator = styled.div`
-  margin: 2px auto;
-  width: 80%;
+  margin: 0 auto;
+  width: 90%;
   height: 3px;
   background-color: #FFEBF2;
 `;
@@ -35,20 +42,19 @@ const OrderTotal = styled.div`
   }
 `;
 
-interface OrderURLParams {
-  username: string,
-  productId: string,
-};
+const OrderForm = styled.div`
+  background-color: #DEE2FF;
+  border-radius: 20px;
+  margin: 15px;
+  padding: 1px 0;
+`;
 
 function Order() {
-  const { username, productId } = useParams<OrderURLParams>();
-  useEffect(() => {
-    
-  })
+  const [pm, setPm] = useState("card");
   return (
     <div>
       <OrderTitle>
-        your order
+        Your Order
       </OrderTitle>
       <Separator />
       <OrderProducts 
@@ -59,6 +65,17 @@ function Order() {
         <span className="title" >Total</span>
         <span className="value">$99.99</span>
       </OrderTotal>
+      <Separator />
+      <OrderForm>
+        <PaymentMethodSelect 
+          onChange={(pm) => setPm(pm)}
+          value={pm}
+        />
+        <Separator />
+        <ShippingAddress />
+        <Separator />
+        <Contacts />
+      </OrderForm>
     </div>
   );
 }
