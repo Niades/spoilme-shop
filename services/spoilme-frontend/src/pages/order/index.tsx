@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { OrderProducts } from "./OrderProducts";
+import { OrderTotal } from "./OrderTotal";
 import { PaymentMethodSelect } from "./PaymentMethodSelect";
 import { ShippingAddress } from "./ShippingAddress";
 import { Contacts } from "./Contacts";
+import { Product } from "../../api";
 
 interface OrderURLParams {
   username: string,
@@ -23,25 +26,6 @@ const Separator = styled.div`
   background-color: #FFEBF2;
 `;
 
-const OrderTotal = styled.div`
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-areas: 'TITLE VALUE';
-  margin: 15px 15px;
-
-  > .title {
-    grid-area: TITLE;
-    align-self: center;
-    font-size: 20px;
-  }
-
-  > .value {
-    grid-area: VALUE;
-    justify-self: end;
-    font-size: 20px;
-  }
-`;
-
 const OrderForm = styled.div`
   background-color: #DEE2FF;
   border-radius: 20px;
@@ -49,8 +33,25 @@ const OrderForm = styled.div`
   padding: 1px 0;
 `;
 
+function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
+  if(products === undefined || products.length === 0) {
+    return undefined;
+  } else {
+    return products
+      .map(product => product.price)
+      .reduce((total, current) => total + current, 0);
+  }
+};
+
 function Order() {
   const [pm, setPm] = useState("card");
+  const [products] = useState<Product[]|undefined>(undefined)
+  const { username, productId } = useParams<OrderURLParams>();
+
+  const total = calcTotalFromProducts(products);
+  useEffect(() => {
+
+  }, [username, productId]);
   return (
     <div>
       <OrderTitle>
@@ -58,13 +59,10 @@ function Order() {
       </OrderTitle>
       <Separator />
       <OrderProducts 
-        products={[{ id: 1, name: "iPad 2000", description: "Hi", price: 99.99, image: "https://www.ixbt.com/img/n1/news/2018/8/2/iPad-Pro-12-9-2018-5K1-1068x580_large.jpg" }]}
+        products={products}
       />
       <Separator />
-      <OrderTotal>
-        <span className="title" >Total</span>
-        <span className="value">$99.99</span>
-      </OrderTotal>
+      <OrderTotal total={total}/>
       <Separator />
       <OrderForm>
         <PaymentMethodSelect 
@@ -72,9 +70,9 @@ function Order() {
           value={pm}
         />
         <Separator />
-        <ShippingAddress />
+        <ShippingAddress verifiedBy={username} />
         <Separator />
-        <Contacts />
+        <Contacts recipientUsername={username} />
       </OrderForm>
     </div>
   );

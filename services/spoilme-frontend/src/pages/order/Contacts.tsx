@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface ContactsProps {
+  recipientUsername: string,
+}
+
 const ContactsContainer = styled.div`
   margin: 15px;
 `;
@@ -32,7 +36,8 @@ const PayButton = styled.button`
   width: 100%;
 `;
 
-const Contacts = () => {
+const Contacts = (props: ContactsProps) => {
+  const { recipientUsername } = props;
   return (
     <ContactsContainer>
       <ContactsTitle>
@@ -61,7 +66,7 @@ const Contacts = () => {
         </FormRow>
         <FormRow>
           <input type="checkbox" />
-          I understand that this is a gift purchase for the user @mikuru
+          I understand that this is a gift purchase for the user @{recipientUsername}
         </FormRow>
         <PayButton>
           Pay
