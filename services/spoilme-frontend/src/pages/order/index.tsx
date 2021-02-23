@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
+import * as api from "../../api";
 import { OrderProducts } from "./OrderProducts";
 import { OrderTotal } from "./OrderTotal";
 import { PaymentMethodSelect } from "./PaymentMethodSelect";
@@ -45,12 +46,12 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
 
 function Order() {
   const [pm, setPm] = useState("card");
-  const [products] = useState<Product[]|undefined>(undefined)
+  const [products, setProducts] = useState<Product[]|undefined>(undefined)
   const { username, productId } = useParams<OrderURLParams>();
 
   const total = calcTotalFromProducts(products);
   useEffect(() => {
-
+    api.getProductInfo(parseInt(productId)).then((product) => setProducts([product]))
   }, [username, productId]);
   return (
     <div>

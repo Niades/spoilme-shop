@@ -22,6 +22,11 @@ function getUserInfo(username: string): Promise<UserInfo> {
   return ky.get(API_ROOT + API_PREFIX + "user", { searchParams: { username } }).json<UserInfo>();
 }
 
+function getProductInfo(id: number): Promise<Product> {
+  return ky.get(API_ROOT + API_PREFIX + "product", { searchParams: { id } }).json<Product>();
+}
+
 export {
   getUserInfo,
+  getProductInfo,
 }

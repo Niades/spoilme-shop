@@ -20,7 +20,29 @@ const getUserOpts = {
       }
     }
   }
-}
+};
+
+const getProductOpts = {
+  schema: {
+    querystring: {
+      type: "object",
+      properties: {
+        id: { type: "number" }
+      },
+      required: [ "id" ]
+    }
+  },
+  response: {
+    201: {
+      type: 'object',
+      properties: {
+        id: { type: 'number' },
+        name: { type: 'string' },
+        price: { type: 'number' }
+      }
+    }
+  }
+};
 
 function addToApp(app) {
   app.get('/api/v1/user', getUserOpts, function(request) {
@@ -31,6 +53,15 @@ function addToApp(app) {
         exclude: ['firstName', 'lastName', 'updatedAt', 'createdAt'],
       },
     })
+  });
+
+  app.get('/api/v1/product', getProductOpts, function(request) {
+    return db.models.Product.findOne({
+      where: { id: request.query.id },
+      attributes: {
+        exclude: ['source', 'description', 'scrapedAt', 'updatedAt', 'createdAt', 'UserId']
+      }
+    });
   });
 };
 
