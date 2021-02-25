@@ -24,8 +24,8 @@ const PaymentMethodsContainer = styled.div`
 `;
 
 const PaymentMethodsTitle = styled.h3`
+  font-weight: 500;
   font-size: 18px;
-  font-weight: normal;
 `;
 
 const PaymentMethodCardContainer = styled.div`

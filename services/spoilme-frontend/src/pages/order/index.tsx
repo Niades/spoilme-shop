@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import * as api from "../../api";
+import { ScrollToTop } from "../../components/ScrollToTop";
 import { OrderProducts } from "./OrderProducts";
 import { OrderTotal } from "./OrderTotal";
 import { PaymentMethodSelect } from "./PaymentMethodSelect";
@@ -15,6 +16,7 @@ interface OrderURLParams {
 };
 
 const OrderTitle = styled.div`
+  font-weight: 600;
   font-size: 20px;
   margin: 13px 0;
   text-align: center;
@@ -55,6 +57,7 @@ function Order() {
   }, [username, productId]);
   return (
     <div>
+      <ScrollToTop />
       <OrderTitle>
         Your Order
       </OrderTitle>

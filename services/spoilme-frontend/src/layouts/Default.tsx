@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
+import LogoUrl from "../assets/images/logo.png";
+
 
 interface ContainerProps {
   children: React.ReactNode,
@@ -10,22 +12,35 @@ interface DefaultLayoutProps {
 };
 
 const Nav = styled.nav`
-  position: fixed;
+  position: relative;
   top: 0;
   right: 0;
   left: 0;
-  width: 100%;
   display: grid;
+  padding: 0 15px;
   grid-template-columns: 1fr;
   background-color: ${props => props.theme.color.header};
   z-index: 999;
 `;
 
-const Logo = styled.div`
+const LogoContainer = styled.div`
+  position: relative;
+  padding: 25px 0;
+`;
+
+const LogoImage = styled.img`
+  position: absolute;
+  max-width: 45px;
+  z-index: 1;
+  top: 9px;
+`;
+
+const LogoText = styled.div`
+  position: relative;
   font-family: 'sans';
   font-size: 24px;
-  padding: 15px 0;
-  text-align: center;
+  z-index: 2;
+  padding-left: 24px;
 `;
 
 const FooterContainer = styled.div`
@@ -40,7 +55,7 @@ const FooterLink = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  padding-top: 58px;
+  padding-top: 10px;
 `;
 
 // Layout container
@@ -48,17 +63,31 @@ const Container = (props: ContainerProps) => {
   return (<div>{props.children}</div>);
 };
 
+const Logo = React.memo(() => {
+  return (
+    <LogoContainer>
+      <LogoImage 
+        src={LogoUrl}
+        alt="Logo"
+      />
+      <LogoText>
+        SpoilMeShop
+      </LogoText>
+    </LogoContainer>
+  );
+});
+
 // Header
-const Header = () => {
+const Header = React.memo(() => {
   return (
     <Nav>
-      <Logo>Spoil Me Shop</Logo>
+      <Logo />
     </Nav>
   );
-};
+});
 
 // Footer
-const Footer = () => {
+const Footer = React.memo(() => {
   return (
     <FooterContainer>
       <FooterLink>
@@ -72,7 +101,7 @@ const Footer = () => {
       </FooterLink>
     </FooterContainer>
   );
-};
+});
 
 // Default
 const DefaultLayout = (props: DefaultLayoutProps) => {

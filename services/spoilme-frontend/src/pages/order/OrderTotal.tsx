@@ -15,6 +15,7 @@ const OrderTotalContainer = styled.div`
     grid-area: TITLE;
     align-self: center;
     font-size: 20px;
+    font-weight: 500;
   }
 
   > .value {

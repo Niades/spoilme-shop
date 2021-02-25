@@ -1,8 +1,17 @@
+const path = require("path");
 const { translateToEn } = require("./translation.js");
 const { convertRubToUsd } = require("./currency");
+const { saveFromUrlToPublicDir } = require("../util/downloader");
 
 const log = require("../util/log").createLogger("scraping-processing");
 
+
+async function saveImage(values) {
+  log("saving image, image=", values["image"]);
+  values["image"] = await saveFromUrlToPublicDir(values["image"]);
+  log("new image = ", values["image"]);
+  return values;
+}
 
 async function translateNameAndDesc(values) {
   values["name"] = await translateToEn(values["name"]);
@@ -40,6 +49,7 @@ async function adaptPrice(values) {
 const PROCESSORS = [
   translateNameAndDesc,
   adaptPrice,
+  saveImage,
 ];
 
 async function processScrapedValues(values) {

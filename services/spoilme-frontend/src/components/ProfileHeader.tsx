@@ -10,12 +10,12 @@ interface ProfileHeaderProps {
 
 const Container = styled.div`
   position: relative;
-  margin: 10px auto 30px;
+  margin: 0 auto 30px;
   width: 95%;
   background-color: #DEE2FF;
   border-radius: 12px;
   display: grid;
-  grid-template-columns: 170px 1fr;
+  grid-template-columns: 135px 1fr;
   grid-template-areas: 
     'AVATAR USERNAME'
     'AVATAR DESCRIPTION'
@@ -25,16 +25,16 @@ const Container = styled.div`
 const Avatar = styled.img`
   position: absolute;
   top: -10px;
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   border-radius: 75px;
   border: 3px solid white;
 `;
 
 const AvatarPlaceholder = styled.div`
   grid-area: AVATAR;
-  width: 150px;
-  height: 130px;
+  width: 125px;
+  height: 110px;
 `;
 
 const UsernameTitle = styled.div`

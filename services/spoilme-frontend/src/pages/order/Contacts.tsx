@@ -9,6 +9,7 @@ const ContactsContainer = styled.div`
 `;
 const ContactsTitle = styled.div`
   font-size: 18px;
+  font-weight: 500;
 `;
 const ContactsForm = styled.form`
   margin: 15px 0;
@@ -29,6 +30,7 @@ const PayButton = styled.button`
   margin-top: 15px; 
   color: white;
   font-size: 20px;
+  font-weight: 600;
   border: none;
   padding: 10px 0;
   background-color: #83B692;

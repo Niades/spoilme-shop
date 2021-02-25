@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { Product } from "../../api";
+import * as format from "../../i18n/format";
+import { prepareProductImageUrl } from "../../util/urlHelper";
 
 
 interface ProductBlockProps {
@@ -66,12 +68,12 @@ const OrderLine = (props: ProductBlockProps) => {
   const { product } = props;
   return (
     <OrderLineContainer>
-      <ProductImage src={product.image}/>
+      <ProductImage src={prepareProductImageUrl(product.image)}/>
       <ProductTitle> 
         {product.name}
       </ProductTitle>
       <ProductPrice>
-        ${product.price}
+        {format.price(product.price)}
       </ProductPrice>
     </OrderLineContainer>
   )

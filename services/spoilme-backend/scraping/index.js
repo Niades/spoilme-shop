@@ -27,6 +27,7 @@ async function refreshAllProducts() {
       product.name = processedValues.name;
       product.description = processedValues.description;
       product.price = processedValues.price;
+      product.image = processedValues.image;
       product.instock = processedValues.instock;
       product.scrapedAt = newScrapedAt;
       await product.save();
