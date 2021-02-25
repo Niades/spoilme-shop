@@ -1,6 +1,11 @@
 import ky from "ky";
 
-const API_ROOT = "http://localhost:3005";
+let API_ROOT = "";
+if(process.env.NODE_ENV === "development") {
+  API_ROOT = "http://localhost:3005"
+} else if(process.env.NODE_ENV === "production") {
+  API_ROOT = window.location.origin;
+}
 const API_PREFIX = "/api/v1/";
 
 export interface Product {

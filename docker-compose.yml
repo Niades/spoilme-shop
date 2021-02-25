@@ -1,6 +1,12 @@
 version: "3.9"
 services:
+  backend:
+    build: "./services/spoilme-backend/"
+    ports:
+      - "3005:3005"
   web:
+    depends_on: 
+      - backend
     build:
       context: "./services"
       dockerfile: "./web/Dockerfile"

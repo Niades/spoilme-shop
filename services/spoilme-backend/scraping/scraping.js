@@ -10,8 +10,9 @@ class Scraper {
 
   constructor() {
     this.launchPromise = puppeteer.launch({
+      executablePath: process.env.CHROME_BIN || null,
       headless: true,
-      args: ["--disable-setuid-sandbox"],
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
       ignoreHTTPSErrors: true,
     });
     this.launchPromise.then((browser) => this.browser = browser);
