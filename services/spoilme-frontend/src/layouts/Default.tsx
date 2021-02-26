@@ -55,7 +55,6 @@ const FooterLink = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  padding-top: 10px;
 `;
 
 // Layout container

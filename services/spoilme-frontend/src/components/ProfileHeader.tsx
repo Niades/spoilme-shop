@@ -10,7 +10,7 @@ interface ProfileHeaderProps {
 
 const Container = styled.div`
   position: relative;
-  margin: 0 auto 30px;
+  margin: 10px auto 0;
   width: 95%;
   background-color: #DEE2FF;
   border-radius: 12px;
@@ -28,7 +28,7 @@ const Avatar = styled.img`
   width: 125px;
   height: 125px;
   border-radius: 75px;
-  border: 3px solid white;
+  border: 4px solid white;
 `;
 
 const AvatarPlaceholder = styled.div`

@@ -15,6 +15,13 @@ interface OrderURLParams {
   productId: string,
 };
 
+const Container = styled.div`
+  @media (min-width: 650px) {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+`;
+
 const OrderTitle = styled.div`
   font-weight: 600;
   font-size: 20px;
@@ -56,7 +63,7 @@ function Order() {
     api.getProductInfo(parseInt(productId)).then((product) => setProducts([product]))
   }, [username, productId]);
   return (
-    <div>
+    <Container>
       <ScrollToTop />
       <OrderTitle>
         Your Order
@@ -78,7 +85,7 @@ function Order() {
         <Separator />
         <Contacts recipientUsername={username} />
       </OrderForm>
-    </div>
+    </Container>
   );
 }
 

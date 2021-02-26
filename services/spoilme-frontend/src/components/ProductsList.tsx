@@ -19,13 +19,13 @@ interface ProductListProps {
 const ProductContainer = styled.div`
   display: grid;
   grid-template-areas: 
-    'IMAGE TITLE'
-    'IMAGE PRICE'
-    'IMAGE BUYBTN'
+    'PADL IMAGE SEP TITLE  PADR'
+    'PADL IMAGE SEP PRICE  PADR'
+    'PADL IMAGE SEP BUYBTN PADR'
   ;
-  grid-template-columns: 170px 1fr;
+  grid-template-columns: 10px 170px 20px 1fr 10px;
   grid-template-rows: 1fr 0.5fr 25px;
-  margin: 15px 10px;
+  margin: 15px auto;
 `;
 
 const ProductImage = styled.img`
@@ -33,6 +33,8 @@ const ProductImage = styled.img`
   width: 150px;
   justify-self: center;
   align-self: center;
+  border: 4px solid #DEE2FF;
+  border-radius: 9px;
 `;
 
 const ProductImageSkeleton = styled.div`
@@ -68,7 +70,19 @@ const BuyButton = styled.button`
   outline: none;
 `;
 
-const ProductListContainer = styled.div``;
+const ProductListContainer = styled.div`
+  background-color: #ECEFFD;
+  border-top: none;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  width: 87%;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  @media(min-width: 650px) {
+    width: 80%;
+  }
+`;
 
 const ProductBlock = (props: ProductBlockProps) => {
   const { product, onClick } = props;
