@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
+
 
 interface ShippingAddressProps {
   verifiedBy: string,
@@ -20,9 +22,16 @@ const ShippingAddress = (props: ShippingAddressProps) => {
   const { verifiedBy } = props;
   return (
     <ShippingAddressContainer>
-      Shipping Address
+      <FormattedMessage
+        id="checkout.shipping-address"
+        defaultMessage="Shipping Address"
+      />
       <AddressLine>
-        Verified by @{verifiedBy}
+        <FormattedMessage
+          id="checkout.shipping-address-verified"
+          values={{ username: verifiedBy, }}
+          defaultMessage="Verified by @{username}"
+        />
       </AddressLine>
     </ShippingAddressContainer>
   );

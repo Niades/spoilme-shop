@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
 import LogoUrl from "../assets/images/logo.png";
 
 
@@ -11,16 +12,16 @@ interface DefaultLayoutProps {
   children: React.ReactNode,
 };
 
+const HeaderContainer = styled.div`
+  padding: 0 10px;
+  background-color: ${props => props.theme.color.header};
+`;
+
 const Nav = styled.nav`
   position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: grid;
-  padding: 0 15px;
-  grid-template-columns: 1fr;
-  background-color: ${props => props.theme.color.header};
   z-index: 999;
+  max-width: 689px;
+  margin: 0 auto;
 `;
 
 const LogoContainer = styled.div`
@@ -79,9 +80,11 @@ const Logo = React.memo(() => {
 // Header
 const Header = React.memo(() => {
   return (
-    <Nav>
-      <Logo />
-    </Nav>
+    <HeaderContainer>
+      <Nav>
+        <Logo />
+      </Nav>
+    </HeaderContainer>
   );
 });
 
@@ -90,13 +93,22 @@ const Footer = React.memo(() => {
   return (
     <FooterContainer>
       <FooterLink>
-        terms of service
+        <FormattedMessage
+          id="footer.tos-link"
+          defaultMessage="terms of service"
+        />
       </FooterLink>
       <FooterLink>
-        privacy policy
+        <FormattedMessage
+          id="footer.pp-link"
+          defaultMessage="privacy policy"
+        />
       </FooterLink>
       <FooterLink>
-        contact us
+        <FormattedMessage
+          id="footer.contact-link"
+          defaultMessage="contact us"
+        />
       </FooterLink>
     </FooterContainer>
   );

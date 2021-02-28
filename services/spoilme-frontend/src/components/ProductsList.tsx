@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { FormattedMessage } from "react-intl";
 import { Product } from "../api";
 import * as format from "../i18n/format";
 import { prepareProductImageUrl } from "../util/urlHelper";
@@ -23,7 +24,7 @@ const ProductContainer = styled.div`
     'PADL IMAGE SEP PRICE  PADR'
     'PADL IMAGE SEP BUYBTN PADR'
   ;
-  grid-template-columns: 10px 170px 20px 1fr 10px;
+  grid-template-columns: 10px 158px 10px 1fr 10px;
   grid-template-rows: 1fr 0.5fr 25px;
   margin: 15px auto;
 `;
@@ -39,12 +40,13 @@ const ProductImage = styled.img`
 
 const ProductImageSkeleton = styled.div`
   grid-area: IMAGE;
-  justify-self: center;
+  justify-self: start;
   align-self: center;
 `;
 
 const ProductTitle = styled.div`
   grid-area: TITLE;
+  font-weight: 500;
 `;
 
 const ProductPrice = styled.div`
@@ -68,20 +70,18 @@ const BuyButton = styled.button`
   cursor: pointer;
   grid-area: BUYBTN;
   outline: none;
+  font-weight: 500;
 `;
 
 const ProductListContainer = styled.div`
   background-color: #ECEFFD;
   border-top: none;
-  margin: 0 auto;
+  margin: -9px auto;
   padding-top: 10px;
   padding-bottom: 5px;
-  width: 87%;
+  width: 95%;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
-  @media(min-width: 650px) {
-    width: 80%;
-  }
 `;
 
 const ProductBlock = (props: ProductBlockProps) => {
@@ -96,7 +96,10 @@ const ProductBlock = (props: ProductBlockProps) => {
         {format.price(product.price)}
       </ProductPrice>
       <BuyButton onClick={() => onClick(product)}>
-        Buy Gift
+        <FormattedMessage 
+          id="showcase.buy-button"
+          defaultMessage="Buy Gift"
+        />
       </BuyButton>
     </ProductContainer>
   )
@@ -115,7 +118,7 @@ const ProductBlockSkeleton = React.memo(() => {
       <ProductPriceSkeleton>
         <Skeleton variant="text" />
       </ProductPriceSkeleton>
-      <Skeleton variant="rect" height="32px" />
+      <Skeleton style={{ gridArea: "BUYBTN" }} variant="rect" height="25px" />
     </ProductContainer>
   )
 });

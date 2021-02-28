@@ -16,10 +16,10 @@ interface ProductListProps {
 const OrderLineContainer = styled.div`
   display: grid;
   grid-template-areas: 
-    'IMAGE TITLE QTY PRICE'
-    'IMAGE TITLE QTY PRICE'
+    'IMAGE SEP TITLE QTY PRICE'
+    'IMAGE SEP TITLE QTY PRICE'
   ;
-  grid-template-columns: 100px 1fr 0.3fr 0.3fr;
+  grid-template-columns: 100px 14px 1fr 0.3fr 0.3fr;
   margin: 15px 0;
 `;
 
@@ -33,6 +33,8 @@ const ProductImage = styled.img`
   min-width: 100px;
   width: 100px;
   justify-self: center;
+  border: 4px solid #DEE2FF;
+  border-radius: 9px;
   align-self: center;
 `;
 
@@ -40,6 +42,7 @@ const ProductImageSkeleton = styled.div`
 `;
 
 const ProductTitle = styled.div`
+  font-weight: 500;
   grid-area: TITLE;
   align-self: center;
   justify-self: center;

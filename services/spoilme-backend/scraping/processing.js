@@ -19,8 +19,8 @@ async function translateNameAndDesc(values) {
   return values;
 };
 
+const TAX = 0.06;
 const SERVICE_COMISSION_PCNT = 15;
-const TAX_PCNT = 6;
 const ACQUIRING_COMISSION_PCNT = 3.5;
 
 function ceilTo(value, to) {
@@ -31,10 +31,11 @@ async function adaptPrice(values) {
   const inUsd = await convertRubToUsd(values["price"]);
   const pcnt = inUsd / 100;
   const notRoundedTotal = (
-    inUsd +
-    SERVICE_COMISSION_PCNT * pcnt +
-    TAX_PCNT * pcnt +
-    ACQUIRING_COMISSION_PCNT * pcnt
+    (
+      inUsd +
+      SERVICE_COMISSION_PCNT * pcnt +
+      ACQUIRING_COMISSION_PCNT * pcnt
+    ) / (1 - TAX)
   );
   let total;
   if(notRoundedTotal < 500) {

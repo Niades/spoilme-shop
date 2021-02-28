@@ -15,10 +15,10 @@ const Container = styled.div`
   background-color: #DEE2FF;
   border-radius: 12px;
   display: grid;
-  grid-template-columns: 135px 1fr;
+  grid-template-columns: 135px 10px 1fr;
   grid-template-areas: 
-    'AVATAR USERNAME'
-    'AVATAR DESCRIPTION'
+    'AVATAR SPC USERNAME'
+    'AVATAR SPC DESCRIPTION'
   ;
 `;
 
@@ -39,13 +39,14 @@ const AvatarPlaceholder = styled.div`
 
 const UsernameTitle = styled.div`
   grid-area: USERNAME;
+  font-weight: 500;
   font-size: 24px;
   align-self: center;
 `;
 
 const Description = styled.div`
   grid-area: DESCRIPTION;
-  padding-right: 15px;
+  padding-right: 10px;
 `;
 
 const ProfileHeader = (props: ProfileHeaderProps) => {

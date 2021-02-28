@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { FormattedMessage } from "react-intl";
 
 interface OrderTotalProps {
   total: number|undefined,
@@ -35,7 +36,12 @@ const OrderTotal = (props: OrderTotalProps) => {
   const skeleton = total === undefined;
   return (
     <OrderTotalContainer>
-      <span className="title" >Total</span>
+      <span className="title">
+        <FormattedMessage
+          id="checkout.total"
+          defaultMessage="Total"
+        />
+      </span>
       {skeleton &&
         <span className="value skeleton">
           <Skeleton variant="text" />

@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
+
 
 interface ContactsProps {
   recipientUsername: string,
@@ -43,7 +45,10 @@ const Contacts = (props: ContactsProps) => {
   return (
     <ContactsContainer>
       <ContactsTitle>
-        Contact Information
+        <FormattedMessage
+          id="checkout.contact-info"
+          defaultMessage="Contact Information"
+        />
       </ContactsTitle>
       <ContactsForm>
         <FormRow>
@@ -56,7 +61,10 @@ const Contacts = (props: ContactsProps) => {
         </FormRow>
         <FormRow>
           <RowLabel>
-            Phone
+            <FormattedMessage
+              id="checkout.contact-info-phone"
+              defaultMessage="Phone"
+            />
           </RowLabel>
           <RowField>
             <input type="text" />
@@ -64,14 +72,24 @@ const Contacts = (props: ContactsProps) => {
         </FormRow>
         <FormRow>
           <input type="checkbox" />
-          I have read and agree to Terms of Service and Privacy Policy
+          <FormattedMessage
+            id="checkout.tos-pp-agreement"
+            defaultMessage="I have read and agree to Terms of Service and Privacy Policy"
+          />
         </FormRow>
         <FormRow>
           <input type="checkbox" />
-          I understand that this is a gift purchase for the user @{recipientUsername}
+          <FormattedMessage
+            id="checkout.gift-purchase-agreement"
+            values={{ username: recipientUsername, }}
+            defaultMessage="I understand that this is a gift purchase for the user @{username}"
+          />
         </FormRow>
         <PayButton>
-          Pay
+          <FormattedMessage
+            id="checkout.pay-button"
+            defaultMessage="Pay"
+          />
         </PayButton>
       </ContactsForm>
     </ContactsContainer>

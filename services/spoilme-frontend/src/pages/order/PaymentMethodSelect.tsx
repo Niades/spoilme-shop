@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
 import Visa from "../../assets/images/visa.png";
 import MC from "../../assets/images/mc.png";
 import Tinkoff from "../../assets/images/tinkoff.png";
@@ -106,7 +107,10 @@ const PaymentMethodSelect = (props: PaymentMethodSelectProps) => {
   return (
     <PaymentMethodsContainer>
       <PaymentMethodsTitle>
-        Payment Method
+        <FormattedMessage
+          id="checkout.payment-method"
+          defaultMessage="Payment Method"
+        />
       </PaymentMethodsTitle>
       <PaymentMethodCard 
         active={value === "card"}

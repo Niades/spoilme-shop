@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
 import * as api from "../../api";
 import { ScrollToTop } from "../../components/ScrollToTop";
 import { OrderProducts } from "./OrderProducts";
@@ -66,7 +67,10 @@ function Order() {
     <Container>
       <ScrollToTop />
       <OrderTitle>
-        Your Order
+        <FormattedMessage
+          id="checkout.your-order"
+          defaultMessage="Your Order"
+        />
       </OrderTitle>
       <Separator />
       <OrderProducts 

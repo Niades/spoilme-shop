@@ -1,0 +1,18 @@
+{
+    "showcase.buy-button": "Купить в подарок",
+
+    "footer.tos-link": "Публичная оферта",
+    "footer.pp-link": "Политика конфиденциальности",
+    "footer.contact-link": "Контакты",
+
+    "checkout.your-order": "Ваш заказ",
+    "checkout.total": "Итого",
+    "checkout.payment-method": "Способ оплаты",
+    "checkout.shipping-address": "Адрес доставки",
+    "checkout.shipping-address-verified": "Подтверждённый адрес @{username}",
+    "checkout.contact-info": "Ваши контакты",
+    "checkout.contact-info-phone": "Телефон",
+    "checkout.tos-pp-agreement": "Я принимаю Публичную оферту и Политику конфиденциальности",
+    "checkout.gift-purchase-agreement": "Я понимаю, что совершаю покупку в подарок пользователю @{username}",
+    "checkout.pay-button": "Оплатить"
+}
