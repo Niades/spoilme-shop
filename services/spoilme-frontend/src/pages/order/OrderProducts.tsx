@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { useIntl } from "react-intl";
 import { Product } from "../../api";
+import { getI18nizedField } from "../../i18n/util";
 import * as format from "../../i18n/format";
 import { prepareProductImageUrl } from "../../util/urlHelper";
 
@@ -68,15 +70,16 @@ const OrderProductsContainer = styled.div`
 `;
 
 const OrderLine = (props: ProductBlockProps) => {
+  const { locale } = useIntl();
   const { product } = props;
   return (
     <OrderLineContainer>
       <ProductImage src={prepareProductImageUrl(product.image)}/>
       <ProductTitle> 
-        {product.name}
+        {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.price)}
+        {format.price(product.displayPrice)}
       </ProductPrice>
     </OrderLineContainer>
   )
@@ -106,8 +109,9 @@ const OrderProducts = (props: ProductListProps) => {
     return (
       <OrderProductsContainer>
         {
-          products.map((product) => (
+          products.map((product, idx) => (
             <OrderLine
+              key={idx.toString()}
               product={product} 
             />
           ))

@@ -24,9 +24,12 @@ async function refreshAllProducts() {
       const newScrapedAt = new Date();
       const freshValues = await scrapeFromSource(product.source);
       const processedValues = await processScrapedValues(freshValues);
-      product.name = processedValues.name;
-      product.description = processedValues.description;
-      product.price = processedValues.price;
+      product.name_RU = processedValues.name_RU;
+      product.name_EN = processedValues.name_EN;
+      product.description_RU = processedValues.description_RU;
+      product.description_EN = processedValues.description_EN;
+      product.scrapedPrice = processedValues.price;
+      product.displayPrice = processedValues.displayPrice;
       product.image = processedValues.image;
       product.instock = processedValues.instock;
       product.scrapedAt = newScrapedAt;

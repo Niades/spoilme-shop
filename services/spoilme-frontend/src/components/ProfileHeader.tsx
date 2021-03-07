@@ -10,9 +10,8 @@ interface ProfileHeaderProps {
 
 const Container = styled.div`
   position: relative;
-  margin: 10px auto 0;
-  width: 95%;
   background-color: #DEE2FF;
+  margin: 10px 10px 0;
   border-radius: 12px;
   display: grid;
   grid-template-columns: 135px 10px 1fr;
@@ -20,6 +19,10 @@ const Container = styled.div`
     'AVATAR SPC USERNAME'
     'AVATAR SPC DESCRIPTION'
   ;
+  @media (min-width: 650px) {
+    margin: 10px auto 0;
+    width: 95%;
+  }
 `;
 
 const Avatar = styled.img`

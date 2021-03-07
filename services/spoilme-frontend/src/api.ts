@@ -10,9 +10,11 @@ const API_PREFIX = "/api/v1/";
 
 export interface Product {
   id: number,
-  name: string,
-  description: string,
-  price: number,
+  name_EN: string,
+  name_RU: string,
+  description_EN: string,
+  description_RU: string,
+  displayPrice: number,
   image: string,
 };
 

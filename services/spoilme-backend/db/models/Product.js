@@ -8,21 +8,33 @@ const Product = db.define('Product', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  name: {
+  name_RU: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
-  description: {
+  name_EN: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true
+  },
+  description_RU: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  description_EN: {
+    type: DataTypes.STRING,
+    allowNull: true
   },
   image: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  price: {
+  scrapedPrice: {
     type: DataTypes.DECIMAL,
     allowNull: false,
+  },
+  displayPrice: {
+    type: DataTypes.DECIMAL,
+    allowNull: true,
   },
   instock: {
     type: DataTypes.BOOLEAN,

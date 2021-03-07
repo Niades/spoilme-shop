@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
+import { LanguageSwitch } from "../components/LanguageSwitch";
 import LogoUrl from "../assets/images/logo.png";
 
 
@@ -18,6 +19,8 @@ const HeaderContainer = styled.div`
 `;
 
 const Nav = styled.nav`
+  display: grid;
+  grid-template-columns: 179px 1fr 50px;
   position: relative;
   z-index: 999;
   max-width: 689px;
@@ -83,6 +86,8 @@ const Header = React.memo(() => {
     <HeaderContainer>
       <Nav>
         <Logo />
+        <div />
+        <LanguageSwitch />
       </Nav>
     </HeaderContainer>
   );

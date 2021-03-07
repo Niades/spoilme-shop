@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Product } from "../api";
 import * as format from "../i18n/format";
+import { getI18nizedField } from "../i18n/util";
 import { prepareProductImageUrl } from "../util/urlHelper";
 
 
@@ -86,14 +87,15 @@ const ProductListContainer = styled.div`
 
 const ProductBlock = (props: ProductBlockProps) => {
   const { product, onClick } = props;
+  const { locale } = useIntl();
   return (
     <ProductContainer>
       <ProductImage src={prepareProductImageUrl(product.image)}/>
-      <ProductTitle> 
-        {product.name}
+      <ProductTitle>
+        {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.price)}
+        {format.price(product.displayPrice)}
       </ProductPrice>
       <BuyButton onClick={() => onClick(product)}>
         <FormattedMessage 
@@ -131,6 +133,7 @@ const ProductList = (props: ProductListProps) => {
         {
           products.map((product) => (
             <ProductBlock
+              key={product.id.toString()}
               product={product} 
               onClick={onProductClick}
             />

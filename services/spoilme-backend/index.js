@@ -4,6 +4,7 @@ const Graceful = require("@ladjs/graceful");
 const Bree = require("bree");
 const log = require("./util/log").createLogger("index");
 
+
 // Fastify
 const app = fastify();
 app.register(require("fastify-cors"), {
@@ -12,6 +13,11 @@ app.register(require("fastify-cors"), {
 app.register(require("fastify-static"), {
   root: path.join(__dirname, 'public'),
   prefix: '/public/'
+});
+app.register(require("fastify-language-parser"), {
+  fallbackLng: "en",
+  supportedLngs: ["ru", "en"],
+  order: ["query", "header"],
 });
 // - API endpoints
 require('./api').addToApp(app);

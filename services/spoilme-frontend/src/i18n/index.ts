@@ -8,23 +8,20 @@ enum Currencies {
 
 const SUPPORTED_LOCALES = ["ru", "en"];
 const DEFAULT_LOCALE = "en";
-const MESSAGES: Record<string, object> = {
+const MESSAGES: Record<string, Record<string, string>> = {
   "ru": messages_ru,
 };
 const browserLanguage: string = navigator.language.split(/[-_]/)[0];
-let activeLocale = DEFAULT_LOCALE;
+let DETECTED_LOCALE = DEFAULT_LOCALE;
 if(SUPPORTED_LOCALES.indexOf(browserLanguage) !== -1) {
-  activeLocale = browserLanguage;
+  DETECTED_LOCALE = browserLanguage;
 }
 const DEFAULT_CURRENCY = Currencies.USD;
-const REACT_INTL_CONFIG: {locale: string, messages: any} = {
-  locale: activeLocale,
-  messages: MESSAGES[activeLocale],
-};
 
 export {
   DEFAULT_CURRENCY,
   DEFAULT_LOCALE,
-  REACT_INTL_CONFIG,
+  DETECTED_LOCALE,
+  MESSAGES,
   Currencies,
 };

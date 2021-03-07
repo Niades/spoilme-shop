@@ -49,7 +49,7 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
     return undefined;
   } else {
     return products
-      .map(product => product.price)
+      .map(product => product.displayPrice)
       .reduce((total, current) => total + current, 0);
   }
 };
