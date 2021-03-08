@@ -71,7 +71,7 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
   }
 };
 
-const Order = () => {
+const Checkout = () => {
   const [pm, setPm] = useState("card");
   const [products, setProducts] = useState<Product[]|undefined>(undefined)
   const {username, productId} = useParams<OrderURLParams>();
@@ -117,4 +117,4 @@ const Order = () => {
   );
 }
 
-export default Order;
+export default Checkout;
