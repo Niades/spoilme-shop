@@ -5,7 +5,7 @@ const connection = require("./connection");
 require("./models");
 const log = require("../util/log").createLogger("db");
 
-const RESET_DB_ON_START = true;
+const RESET_DB_ON_START = false;
 if(RESET_DB_ON_START) {
   log("[!] Resetting DB because RESET_DB_ON_START=true");
 }

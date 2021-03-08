@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const db = require("../db");
 
 const getUserOpts = {
@@ -59,6 +60,11 @@ function addToApp(app) {
       where: { username: req.query.username },
       include: [{
         model: db.models.Product,
+        where: { 
+          displayPrice: {
+            [Op.not]: null,
+          },
+        },
         attributes: {
           exclude: [...PRODUCT_ALWAYS_EXCLUDE]
         }

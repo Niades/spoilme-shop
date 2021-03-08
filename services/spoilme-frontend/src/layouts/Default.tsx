@@ -59,6 +59,7 @@ const FooterLink = styled.div`
 `;
 
 const ContentContainer = styled.div`
+  min-height: calc(100vh - 78px);
 `;
 
 // Layout container

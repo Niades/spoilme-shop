@@ -1,26 +1,35 @@
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 import { DefaultLayout } from "./layouts/Default";
-import UserShowcase from "./pages/user-showcase";
-import Order from "./pages/order";
+import { LoadingSpinner } from "./components/LoadingSpinner";
+
+const Order = React.lazy(() => import("./pages/order"));
+const UserShowcase = React.lazy(() => import("./pages/user-showcase"));
 
 function App() {
   return (
     <Router>
       <DefaultLayout>
-        <Switch>
-          <Route
-            path="/:username/gift/:productId"
-            children={(<Order />)}
-          />
-          <Route
-            path="/:username"
-            children={(<UserShowcase />)}
-          />
-        </Switch>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Switch>
+            <Route
+              path="/loading"
+              children={(<LoadingSpinner />)}
+            />
+            <Route
+              path="/:username/gift/:productId"
+              children={(<Order />)}
+            />
+            <Route
+              path="/:username"
+              children={(<UserShowcase />)}
+            />
+          </Switch>
+        </Suspense>
       </DefaultLayout>
     </Router>
   );

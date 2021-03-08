@@ -57,7 +57,7 @@ const ProfileHeader = (props: ProfileHeaderProps) => {
   return (
     <Container>
       <AvatarPlaceholder />
-      <Avatar src={MikuruAvatar}/>
+      <Avatar alt={`@${username}'s avatar`} src={MikuruAvatar}/>
       <UsernameTitle>
         @{username}
       </UsernameTitle>
