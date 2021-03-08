@@ -5,6 +5,7 @@
     "footer.pp-link": "Политика конфиденциальности",
     "footer.contact-link": "Контакты",
 
+    "checkout.back-link": "Назад к списку желаний @{username}",
     "checkout.your-order": "Ваш заказ",
     "checkout.total": "Итого",
     "checkout.payment-method": "Способ оплаты",
