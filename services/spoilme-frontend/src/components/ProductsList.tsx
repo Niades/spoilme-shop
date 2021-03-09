@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { useHistory, useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
+import { UserShowcaseURLParams } from "../pages/user-showcase";
 import { Product } from "../api";
 import * as format from "../i18n/format";
 import { getI18nizedField } from "../i18n/util";
@@ -10,12 +12,10 @@ import { prepareProductImageUrl } from "../util/urlHelper";
 
 interface ProductBlockProps {
   product: Product,
-  onClick: (product: Product) => void,
 };
 
 interface ProductListProps {
   products: Product[] | undefined,
-  onProductClick: (product: Product) => void,
 };
 
 const ProductContainer = styled.div`
@@ -24,14 +24,17 @@ const ProductContainer = styled.div`
     'PADL IMAGE SEP TITLE  PADR'
     'PADL IMAGE SEP PRICE  PADR'
     'PADL IMAGE SEP BUYBTN PADR'
+    'PADL IMAGE SEP DTLBTN PADR'
   ;
   grid-template-columns: 10px 158px 10px 1fr 10px;
-  grid-template-rows: 1fr 0.5fr 25px;
+  grid-template-rows: 1fr 0.5fr 25px 25px 17px;
   margin: 15px auto;
 `;
 
 const ProductImage = styled.img`
   grid-area: IMAGE;
+  padding: 5px 3px;
+  background-color: #FFF;
   width: 150px;
   justify-self: center;
   align-self: center;
@@ -51,9 +54,10 @@ const ProductTitle = styled.div`
 `;
 
 const ProductPrice = styled.div`
+  margin: 5px 0;
   grid-area: PRICE;
   font-size: 20px;
-
+  color: #000;
   justify-self: start;
 `;
 
@@ -71,8 +75,20 @@ const BuyButton = styled.button`
   cursor: pointer;
   grid-area: BUYBTN;
   outline: none;
+  font-weight: 600;
+`;
+
+const DetailsButton = styled.button`
+  background-color: #FFD6EA;
+  border: none;
+  border-radius: 9px;
+  color: black;
+  cursor: pointer;
+  grid-area: DTLBTN;
+  outline: none;
   font-weight: 500;
 `;
+
 
 const ProductListContainer = styled.div`
   background-color: #ECEFFD;
@@ -86,7 +102,9 @@ const ProductListContainer = styled.div`
 `;
 
 const ProductBlock = (props: ProductBlockProps) => {
-  const { product, onClick } = props;
+  const { product } = props;
+  const { username } = useParams<UserShowcaseURLParams>();
+  const history = useHistory();
   const { locale } = useIntl();
   return (
     <ProductContainer>
@@ -97,12 +115,18 @@ const ProductBlock = (props: ProductBlockProps) => {
       <ProductPrice>
         {format.price(product.displayPrice)}
       </ProductPrice>
-      <BuyButton onClick={() => onClick(product)}>
+      <BuyButton onClick={() => history.push(`/${username}/gift/${product.id}/checkout`)}>
         <FormattedMessage 
-          id="showcase.buy-button"
-          defaultMessage="Buy Gift"
+          id="common.buy-button"
+          defaultMessage="Gift Now"
         />
       </BuyButton>
+      <DetailsButton onClick={() => history.push(`/${username}/gift/${product.id}`)}>
+        <FormattedMessage 
+          id="showcase.details-button"
+          defaultMessage="Details"
+        />
+      </DetailsButton>
     </ProductContainer>
   )
 };
@@ -126,7 +150,7 @@ const ProductBlockSkeleton = React.memo(() => {
 });
 
 const ProductList = (props: ProductListProps) => {
-  const { products, onProductClick } = props;
+  const { products } = props;
   if(products !== undefined) {
     return (
       <ProductListContainer>
@@ -135,7 +159,6 @@ const ProductList = (props: ProductListProps) => {
             <ProductBlock
               key={product.id.toString()}
               product={product} 
-              onClick={onProductClick}
             />
           ))
         }

@@ -47,7 +47,7 @@ const RadioIconContainer = styled.div`
   align-self: center;
   width: 15px;
   height: 15px;
-  border: 1px solid #FFEBF2;
+  border: 1px solid #000;
   border-radius: 50%;
 
   > .filler {
@@ -59,7 +59,7 @@ const RadioIconContainer = styled.div`
     margin: auto;
     width: 11px;
     height: 11px;
-    background-color: #E9D1ED;
+    background-color: #83B692;
     border-radius: 50%;
   }
 `;

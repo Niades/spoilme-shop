@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import * as api from "../../api";
 import { Product } from "../../api";
 import { ProfileHeader } from "../../components/ProfileHeader";
 import { ProductList } from "../../components/ProductsList";
 
-interface UserShowcaseURLParams {
+export interface UserShowcaseURLParams {
   username: string,
 };
 
@@ -24,7 +24,6 @@ const Container = styled.div`
 `;
 
 function UserShowcase() {
-  const history = useHistory();
   const { username } = useParams<UserShowcaseURLParams>();
   const [userInfo, setUserInfo] = useState<UserInfoState|undefined>(undefined);
   useEffect(() => {
@@ -38,7 +37,6 @@ function UserShowcase() {
       />
       <ProductList 
         products={userInfo?.Products}
-        onProductClick={(product) => history.push(`/${username}/gift/${product.id}`)}
       />
     </Container>
   );

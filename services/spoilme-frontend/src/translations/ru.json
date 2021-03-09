@@ -1,11 +1,16 @@
 {
-    "showcase.buy-button": "Купить в подарок",
+    "common.buy-button": "Купить подарок",
+    "common.back-to-wishlist": "Назад к списку желаний @{username}",
+
+    "showcase.details-button": "О товаре",
 
     "footer.tos-link": "Публичная оферта",
     "footer.pp-link": "Политика конфиденциальности",
     "footer.contact-link": "Контакты",
 
-    "checkout.back-link": "Назад к списку желаний @{username}",
+    "details.feature-name-manufacturer-country": "Страна-производитель:",
+    "details.feature-value-manufacturer-country": "Китай",
+
     "checkout.your-order": "Ваш заказ",
     "checkout.total": "Итого",
     "checkout.payment-method": "Способ оплаты",

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
+import { Separator } from "../../components/Separator";
 import { ReactComponent as ChevronLeftIcon } from "../../assets/images/chevron-left.svg";
 import * as api from "../../api";
 import { ScrollToTop } from "../../components/ScrollToTop";
@@ -48,12 +49,6 @@ const OrderTitle = styled.div`
   text-align: center;
 `;
 
-const Separator = styled.div`
-  width: 100%;
-  height: 3px;
-  background-color: #FFEBF2;
-`;
-
 const OrderForm = styled.div`
   background-color: #DEE2FF;
   border-radius: 20px;
@@ -85,7 +80,7 @@ const Checkout = () => {
       <Link to={`/${username}`}>
         <ChevronLeftIcon />
         <FormattedMessage
-          id="checkout.back-link"
+          id="common.back-to-wishlist"
           values={{ username }}
           defaultMessage="Back to @{username}'s wishlist"
         />
