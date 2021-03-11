@@ -1,8 +1,7 @@
 const { Sequelize } = require("sequelize");
+const { DB_CONNECTION_STRING } = require("../constants");
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './db.sqlite3',
+const sequelize = new Sequelize(DB_CONNECTION_STRING, {
   logging: false,
 });
 

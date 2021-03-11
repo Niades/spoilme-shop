@@ -1,7 +1,12 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { ReactComponent as ChevronLeftIcon } from "../assets/images/chevron-left.svg";
 
+interface BreadcrumbLinkProps {
+  to: string,
+  children: ReactNode,
+};
 
 const LinkContainer = styled.div`
   >a {
@@ -19,7 +24,7 @@ const LinkContainer = styled.div`
   }
 `;
 
-const BreadcrumbLink = (props) => {
+const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
   const { to, children } = props;
   return (
     <LinkContainer>

@@ -192,7 +192,6 @@ const ProductDetails = () => {
   const { username, productId } = useParams<ProductDetailsParams>();
   const [product, setProduct] = useState<api.Product|undefined>(undefined)
   const history = useHistory();
-  const productFetched = product !== undefined;
   useEffect(() => {
     api.getProductInfo(parseInt(productId)).then((product) => setProduct(product))
   }, [productId]);
@@ -206,10 +205,10 @@ const ProductDetails = () => {
           defaultMessage="Back to @{username}'s wishlist"
         />
       </BreadcrumbLink>
-      {!productFetched &&
+      {product === undefined &&
         <DetailsSkeleton />
       }
-      {productFetched &&
+      {product !== undefined &&
         <Details 
           product={product}
           onBuyClick={() => history.push(`/${username}/gift/${productId}/checkout`)}

@@ -1,9 +1,17 @@
 version: "3.9"
 services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=spoilme
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   backend:
     build: "./services/spoilme-backend/"
     ports:
       - "3005:3005"
+    depends_on:
+      - db
   web:
     depends_on: 
       - backend

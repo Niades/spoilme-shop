@@ -1,4 +1,7 @@
 ozon_scraper/.pytest_cache
 
-showcase-frontend/build
-showcase-frontend/node_modules
+spoilme-backend/node_modules
+spoilme-backend/*.sqlite3
+
+spoilme-frontend/build
+spoilme-frontend/node_modules

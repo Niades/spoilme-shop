@@ -9,6 +9,7 @@ RUN apk add --no-cache \
         ttf-freefont \
         nss
 ENV CHROME_BIN=/usr/bin/chromium-browser
+ENV NODE_ENV=production
 WORKDIR /app
 COPY package.json /app
 COPY yarn.lock /app

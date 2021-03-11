@@ -25,10 +25,12 @@ require('./api').addToApp(app);
 // Bree
 const bree = new Bree({
   jobs: [
+    /*
     {
       name: 'refresh-all-products',
       timeout: '10s'
     }
+    */
   ]
 });
 
