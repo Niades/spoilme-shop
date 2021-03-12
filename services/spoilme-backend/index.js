@@ -6,7 +6,9 @@ const log = require("./util/log").createLogger("index");
 
 
 // Fastify
-const app = fastify();
+const app = fastify({
+  logger: true,
+});
 app.register(require("fastify-cors"), {
   origin: "*"
 });
@@ -23,22 +25,25 @@ app.register(require("fastify-language-parser"), {
 require('./api').addToApp(app);
 
 // Bree
+/*
 const bree = new Bree({
   jobs: [
-    /*
     {
       name: 'refresh-all-products',
       timeout: '10s'
     }
-    */
   ]
 });
+*/
 
 // Graceful
-const graceful = new Graceful({ servers: [app], brees: [bree] });
+const graceful = new Graceful({ 
+  servers: [app], 
+  // brees: [bree]
+});
 
 // Start
 graceful.listen();
-bree.start();
+// bree.start();
 app.listen(3005, '0.0.0.0');
 log("Everything started.");
