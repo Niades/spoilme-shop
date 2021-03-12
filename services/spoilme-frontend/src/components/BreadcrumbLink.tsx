@@ -8,31 +8,45 @@ interface BreadcrumbLinkProps {
   children: ReactNode,
 };
 
-const LinkContainer = styled.div`
-  >a {
+const BreadcrumbContainer = styled.div`
+  position: absolute;
+  top: 78px;
+  left: 0;
+  width: 100vw;
+  background-color: #ECEFFD;
+
+  a {
     display: grid;
     grid-template-columns: 20px 1fr;
     padding-top: 5px;
     padding-left: 10px;
     padding-bottom: 5px;
-    background-color: #ECEFFD;
     font-weight: 300;
     font-size: 14px;
-    margin: 0 -10px;
     color: #000000 !important;
     text-decoration: none;
+  }
+`;
+
+const BreadcrumbInner = styled.div`
+  @media (min-width: 650px) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
   }
 `;
 
 const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
   const { to, children } = props;
   return (
-    <LinkContainer>
-      <Link to={to}>
-        <ChevronLeftIcon />
-        {children}
-      </Link>    
-    </LinkContainer>
+    <BreadcrumbContainer>
+      <BreadcrumbInner>
+        <Link to={to}>
+          <ChevronLeftIcon />
+          {children}
+        </Link>    
+      </BreadcrumbInner>
+    </BreadcrumbContainer>
   );
 };
 

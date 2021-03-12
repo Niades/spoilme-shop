@@ -60,6 +60,12 @@ const FooterLink = styled.div`
 
 const ContentContainer = styled.div`
   min-height: calc(100vh - 78px);
+
+  @media (min-width: 650px) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+  }
 `;
 
 // Layout container

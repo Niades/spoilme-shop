@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
 import { Separator } from "../../components/Separator";
-import { ReactComponent as ChevronLeftIcon } from "../../assets/images/chevron-left.svg";
+import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 import * as api from "../../api";
 import { ScrollToTop } from "../../components/ScrollToTop";
 import { OrderProducts } from "./OrderProducts";
@@ -20,26 +20,8 @@ interface OrderURLParams {
 
 
 const Container = styled.div`
-  @media (min-width: 650px) {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0;
-  }
+  margin-top: 60px;
   padding: 0 10px;
-
-  >a {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    background-color: #ECEFFD;
-    font-weight: 300;
-    font-size: 14px;
-    margin: 0 -10px;
-    color: #000000 !important;
-    text-decoration: none;
-  }
 `;
 
 const OrderTitle = styled.div`
@@ -76,15 +58,14 @@ const Checkout = () => {
   }, [productId]);
   return (
     <Container>
-      <ScrollToTop />
-      <Link to={`/${username}`}>
-        <ChevronLeftIcon />
+      <ScrollToTop /> 
+      <BreadcrumbLink to={`/${username}`}>
         <FormattedMessage
           id="common.back-to-wishlist"
           values={{ username }}
           defaultMessage="Back to @{username}'s wishlist"
         />
-      </Link>
+      </BreadcrumbLink>
       <OrderTitle>
         <FormattedMessage
           id="checkout.your-order"

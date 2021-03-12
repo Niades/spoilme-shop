@@ -111,7 +111,7 @@ const ProductDescription = styled.div`
 
 const DetailsSkeleton = React.memo(() => {
   return (
-    <div style={{ marginTop: "20px", }}>
+    <div style={{ marginTop: "60px", }}>
       <ProductHeader>
         <Skeleton variant="rect" height="200px" width="180px" />
         <ProductName>
@@ -142,7 +142,7 @@ const Details = (props: DetailsProps) => {
   const { product, onBuyClick } = props;
   const { locale } = useIntl();
   return (
-    <div style={{ marginTop: "20px", }}>
+    <div style={{ marginTop: "60px", }}>
       <ProductHeader>
         <ProductImage>
           <img 
