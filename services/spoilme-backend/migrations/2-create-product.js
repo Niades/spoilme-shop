@@ -23,11 +23,11 @@ module.exports = {
       },
       description_EN: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("medium"),
       },
       description_RU: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("medium"),
       },
       image: {
         allowNull: true,
@@ -57,6 +57,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       }
+    }, {
+      initialAutoIncrement: 10000,
     });
   },
   down: async (queryInterface, Sequelize) => {

@@ -7,7 +7,7 @@ const log = require("./util/log").createLogger("index");
 
 // Fastify
 const app = fastify({
-  logger: true,
+  // logger: true,
 });
 app.register(require("fastify-cors"), {
   origin: "*"

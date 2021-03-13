@@ -16,4 +16,4 @@ COPY yarn.lock /app
 RUN yarn install
 COPY . /app
 EXPOSE 3005
-CMD ["node", "./index.js"]
+CMD ["./scripts/start-server.sh"]

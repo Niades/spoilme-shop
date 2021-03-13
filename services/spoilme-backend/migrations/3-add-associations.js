@@ -6,7 +6,7 @@ module.exports = {
       'Products',
       'UserId',
       {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: 'Products',
           key: 'id',

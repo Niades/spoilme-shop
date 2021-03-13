@@ -23,7 +23,7 @@ module.exports = {
       },
       profileDescription: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("medium"),
       },
       createdAt: {
         allowNull: false,
@@ -33,6 +33,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    }, {
+      initialAutoIncrement: 10000,
     });
   },
   down: async (queryInterface, Sequelize) => {

@@ -15,7 +15,7 @@ async function main() {
   for(let url of [URLS[0]]) {
     const result = await scrapeFromSource(url);
     const payload = { ...result, source: url };
-    const rawResponse = await fetch('http://localhost:3005/api/v1/product/ozonSync', {
+    const rawResponse = await fetch('http://staging.spoilme.shop/api/v1/product/ozonSync', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
