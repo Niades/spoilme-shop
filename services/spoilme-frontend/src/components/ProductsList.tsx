@@ -21,14 +21,26 @@ interface ProductListProps {
 const ProductContainer = styled.div`
   display: grid;
   grid-template-areas: 
-    'PADL IMAGE SEP TITLE  PADR'
-    'PADL IMAGE SEP PRICE  PADR'
-    'PADL IMAGE SEP BUYBTN PADR'
-    'PADL IMAGE SEP DTLBTN PADR'
+    'IMAGE SEP TITLE '
+    'IMAGE SEP PRICE '
+    'IMAGE SEP BUYBTN'
+    'IMAGE SEP DTLBTN'
   ;
-  grid-template-columns: 10px 158px 10px 1fr 10px;
-  grid-template-rows: 1fr 0.5fr 25px 25px 17px;
+  grid-template-columns: 158px 10px 1fr;
+  grid-template-rows: 1fr 0.6fr 50px 40px;
   margin: 15px auto;
+  border-radius: 9px;
+  background-color: #fff;
+  padding: 10px;
+
+  @media (min-width: 570px) {
+    grid-template-columns: 10px 158px 10px 1fr 10px 0.4fr 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+      'PADL IMAGE SEP TITLE PADR BUYBTN'
+      'PADL IMAGE SEP PRICE PADR DTLBTN'
+    ;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -51,14 +63,20 @@ const ProductImageSkeleton = styled.div`
 const ProductTitle = styled.div`
   grid-area: TITLE;
   font-weight: 500;
+  font-size: 18px;
+  text-align: center;
 `;
 
 const ProductPrice = styled.div`
+  text-align: center;
   margin: 5px 0;
   grid-area: PRICE;
+  align-self: center;
   font-size: 20px;
   color: #000;
-  justify-self: start;
+  @media (min-width: 570px) {
+    align-self: start;
+  }
 `;
 
 const ProductPriceSkeleton = styled.div`
@@ -71,32 +89,40 @@ const BuyButton = styled.button`
   background-color: #FF8AC3;
   border: none;
   border-radius: 9px;
+  font-size: 18px;
   color: white;
   cursor: pointer;
   grid-area: BUYBTN;
   outline: none;
   font-weight: 600;
+  justify-self: center;
+  width: 80%;
+  height: 45px;
+  @media (min-width: 570px) {
+    align-self: center;
+    width: 100%;
+  }
 `;
 
 const DetailsButton = styled.button`
-  background-color: #FFD6EA;
+  background-color: transparent;
   border: none;
-  border-radius: 9px;
   color: black;
   cursor: pointer;
   grid-area: DTLBTN;
   outline: none;
   font-weight: 500;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  height: 40px;
 `;
-
 
 const ProductListContainer = styled.div`
   background-color: #ECEFFD;
   border-top: none;
   margin: -9px auto;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  width: 95%;
+  padding: 10px 10px 5px 10px;
+  width: 92%;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
 `;

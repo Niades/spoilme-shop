@@ -10,6 +10,7 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
 const UserShowcase = React.lazy(() => import("./pages/user-showcase"));
 const ProductDetails = React.lazy(() => import("./pages/details"));
 const Checkout = React.lazy(() => import("./pages/checkout"));
+const HowItWorks = React.lazy(() => import("./pages/how-it-works"));
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
       <DefaultLayout>
         <Suspense fallback={<LoadingSpinner />}>
           <Switch>
+            <Route
+              path="/how-it-works"
+              children={(<HowItWorks />)}
+            />
             <Route
               path="/:username/gift/:productId/checkout"
               children={(<Checkout />)}

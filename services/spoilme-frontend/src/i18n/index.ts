@@ -1,4 +1,5 @@
-import messages_ru from "../translations/ru.json";
+// @ts-ignore
+import messages_ru from "../translations/ru.yaml";
 
 
 enum Currencies {

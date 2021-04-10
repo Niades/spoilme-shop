@@ -20,7 +20,7 @@ const HeaderContainer = styled.div`
 
 const Nav = styled.nav`
   display: grid;
-  grid-template-columns: 179px 1fr 50px;
+  grid-template-columns: 179px 1fr 51px;
   position: relative;
   z-index: 999;
   max-width: 689px;
@@ -41,7 +41,6 @@ const LogoImage = styled.img`
 
 const LogoText = styled.div`
   position: relative;
-  font-family: 'sans';
   font-size: 24px;
   z-index: 2;
   padding-left: 24px;
