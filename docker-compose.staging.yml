@@ -9,7 +9,9 @@ services:
   backend:
     build: "./services/spoilme-backend/"
     labels:
-      - traefik.http.routers.backend.rule=(Host(`staging.spoilme.shop`) && Path(`/api`))
+      - traefik.enable=true
+      - traefik.http.routers.backend.rule=(Host(`staging.spoilme.shop`)&&PathPrefix(`/api`))
+      - traefik.http.routers.backend.priority=2
       - traefik.http.routers.backend.tls=true
       - traefik.http.routers.backend.tls.certresolver=letsEncrypt
     depends_on:
@@ -17,16 +19,14 @@ services:
   frontend:
     build: "./services/spoilme-frontend/"
     labels:
-      - traefik.http.routers.frontend.rule=Host(`staging.spoilme.shop`)
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=(Host(`staging.spoilme.shop`)&&PathPrefix(`/`))
+      - traefik.http.routers.frontend.priority=1
       - traefik.http.routers.frontend.tls=true
       - traefik.http.routers.frontend.tls.certresolver=letsEncrypt
   reverse-proxy:
     image: traefik:latest
     network_mode: host
-    ports:
-      - "80:80"
-      - "8080:8080"
-      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik

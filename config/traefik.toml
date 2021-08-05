@@ -1,2 +1,24 @@
 [api]
 insecure = true
+
+[accessLog]
+
+[entryPoints.web]
+address = ":80"
+
+[entryPoints.websecure]
+address = ":443"
+
+[entryPoints.web.http.redirections.entryPoint]
+to = "websecure"
+scheme = "https"
+
+[certificatesResolvers.letsEncrypt.acme]
+email = "hello@spoilme.shop"
+storage = "acme.json"
+
+[certificatesResolvers.letsEncrypt.acme.tlsChallenge]
+
+[providers.docker]
+watch = true
+exposedByDefault = false
