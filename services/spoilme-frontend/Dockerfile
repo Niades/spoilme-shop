@@ -5,5 +5,7 @@ COPY ./package.json /app/package.json
 RUN yarn install
 COPY ./ /app/
 RUN yarn build
-FROM nginx:latest
-COPY --from=build-frontend /app/build /usr/share/nginx/html
+FROM steebchen/nginx-spa:stable
+COPY --from=build-frontend /app/build /app
+EXPOSE 80
+CMD ["nginx"]
