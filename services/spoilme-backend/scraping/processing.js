@@ -67,7 +67,6 @@ async function adaptPrice(values) {
 
 const PROCESSORS = [
   i18nizeValues,
-  translateNameAndDesc,
   adaptPrice,
   saveImage,
 ];
