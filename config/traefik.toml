@@ -1,6 +1,3 @@
-[api]
-insecure = true
-
 [accessLog]
 
 [entryPoints.web]
