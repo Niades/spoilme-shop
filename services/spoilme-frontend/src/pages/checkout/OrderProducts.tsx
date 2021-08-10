@@ -79,7 +79,7 @@ const OrderLine = (props: ProductBlockProps) => {
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.displayPrice)}
+        {format.price(product.price)}
       </ProductPrice>
     </OrderLineContainer>
   )

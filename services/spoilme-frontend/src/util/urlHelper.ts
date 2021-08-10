@@ -7,7 +7,8 @@ if(process.env.NODE_ENV === "development") {
 }
 
 function prepareProductImageUrl(filename: string): string {
-  return `${PRODUCT_IMAGES_ROOT}${PRODUCT_IMAGES_DIR}${filename}`;
+  //return `${PRODUCT_IMAGES_ROOT}${PRODUCT_IMAGES_DIR}${filename}`;
+  return filename;
 };
 
 export {

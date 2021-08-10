@@ -43,7 +43,7 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
     return undefined;
   } else {
     return products
-      .map(product => product.displayPrice)
+      .map(product => product.price)
       .reduce((total, current) => total + current, 0);
   }
 };
@@ -54,7 +54,7 @@ const Checkout = () => {
   const {username, productId} = useParams<OrderURLParams>();
   const total = calcTotalFromProducts(products);
   useEffect(() => {
-    api.getProductInfo(parseInt(productId)).then((product) => setProducts([product]))
+    api.getProductInfo(productId).then((product) => setProducts([product]))
   }, [productId]);
   return (
     <Container>

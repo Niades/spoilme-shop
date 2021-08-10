@@ -9,27 +9,28 @@ if(process.env.NODE_ENV === "development") {
 const API_PREFIX = "/api/v1/";
 
 export interface Product {
-  id: number,
-  name_EN: string,
-  name_RU: string,
-  description_EN: string,
-  description_RU: string,
-  displayPrice: number,
+  id: string,
+  name_en: string,
+  name_ru: string,
+  price: number,
   image: string,
 };
 
 export interface UserInfo {
-  id: number,
   username: string,
   profileDescription: string,
-  Products: Product[],
+};
+
+export interface UserInfoResult {
+  user: UserInfo,
+  products: Product[],
+};
+
+function getUserInfo(username: string): Promise<UserInfoResult> {
+  return ky.get(API_ROOT + API_PREFIX + "user", { searchParams: { username } }).json<UserInfoResult>();
 }
 
-function getUserInfo(username: string): Promise<UserInfo> {
-  return ky.get(API_ROOT + API_PREFIX + "user", { searchParams: { username } }).json<UserInfo>();
-}
-
-function getProductInfo(id: number): Promise<Product> {
+function getProductInfo(id: string): Promise<Product> {
   return ky.get(API_ROOT + API_PREFIX + "product", { searchParams: { id } }).json<Product>();
 }
 

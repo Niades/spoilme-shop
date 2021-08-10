@@ -10,10 +10,14 @@ export interface UserShowcaseURLParams {
   username: string,
 };
 
-interface UserInfoState {
+interface User {
   username: string|undefined,
   profileDescription: string|undefined,
-  Products: Product[],
+};
+
+interface UserInfoState {
+  user: User,
+  products: Product[],
 };
 
 const Container = styled.div`
@@ -27,16 +31,19 @@ function UserShowcase() {
   const { username } = useParams<UserShowcaseURLParams>();
   const [userInfo, setUserInfo] = useState<UserInfoState|undefined>(undefined);
   useEffect(() => {
-    api.getUserInfo(username).then((resp: api.UserInfo) => setUserInfo(resp));
+    api.getUserInfo(username).then(
+      (resp: api.UserInfoResult) => setUserInfo(resp),
+      () => window.location.href = "/", 
+    );
   }, [username])
   return (
     <Container>
       <ProfileHeader
         username={username}
-        description={userInfo?.profileDescription}
+        description={userInfo?.user.profileDescription}
       />
       <ProductList 
-        products={userInfo?.Products}
+        products={userInfo?.products}
       />
     </Container>
   );

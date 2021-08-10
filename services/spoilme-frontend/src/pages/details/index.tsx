@@ -154,7 +154,7 @@ const Details = (props: DetailsProps) => {
           {getI18nizedField(product, "name", locale)}
         </ProductName>
         <ProductPrice>
-          {format.price(product.displayPrice)}
+          {format.price(product.price)}
         </ProductPrice>
       </ProductHeader>
       <ProductButtons>
@@ -193,7 +193,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState<api.Product|undefined>(undefined)
   const history = useHistory();
   useEffect(() => {
-    api.getProductInfo(parseInt(productId)).then((product) => setProduct(product))
+    api.getProductInfo(productId).then((product) => setProduct(product))
   }, [productId]);
   return (
     <Container>

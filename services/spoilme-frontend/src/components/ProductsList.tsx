@@ -47,11 +47,14 @@ const ProductImage = styled.img`
   grid-area: IMAGE;
   padding: 5px 3px;
   background-color: #FFF;
-  width: 150px;
+  width: auto;
+  max-width: 100px;
   justify-self: center;
   align-self: center;
   border: 4px solid #DEE2FF;
   border-radius: 9px;
+  max-height: 100px;
+  height: auto;
 `;
 
 const ProductImageSkeleton = styled.div`
@@ -139,7 +142,7 @@ const ProductBlock = (props: ProductBlockProps) => {
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.displayPrice)}
+        {format.price(product.price)}
       </ProductPrice>
       <BuyButton onClick={() => history.push(`/${username}/gift/${product.id}/checkout`)}>
         <FormattedMessage 
