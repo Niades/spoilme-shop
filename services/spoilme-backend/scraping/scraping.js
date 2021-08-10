@@ -21,7 +21,7 @@ class Scraper {
 
   constructor() {
     this.launchPromise = puppeteer.launch({
-      executablePath: process.env.CHROME_BIN || null,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
       args: ["--no-sandbox"],
       headless: true,
     });

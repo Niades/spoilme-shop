@@ -12,8 +12,10 @@ const URLS = [
 ];
 
 async function main() {
-  for(let url of [URLS[0]]) {
+  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+  for(let url of URLS) {
     const result = await scrapeFromSource(url);
+    console.log({ scrapedResult: result });
     const payload = { ...result, source: url };
     const rawResponse = await fetch('http://staging.spoilme.shop/api/v1/product/ozonSync', {
       method: 'POST',
@@ -25,8 +27,7 @@ async function main() {
     });
     const content = await rawResponse.json();
 
-  console.log(content);
-    console.log(result);
+    console.log({content});
   }
 };
 

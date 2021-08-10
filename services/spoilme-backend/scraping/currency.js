@@ -27,6 +27,13 @@ async function convertRubToUsd(rub) {
   return inUsd;
 }
 
+const USD_TO_RUB = 75;
+
+function convertRubToUsdDumb(rub) {
+  return rub / USD_TO_RUB;
+}
+
 module.exports = {
   convertRubToUsd,
+  convertRubToUsdDumb,
 };

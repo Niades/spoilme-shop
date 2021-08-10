@@ -1,9 +1,10 @@
-const { Op } = require('sequelize');
 const db = require("../db");
 const { processScrapedValues } = require("../scraping/processing");
 const { SOURCES } = require("../scraping/sources");
+const { FB_COLLECTIONS } = require("../constants");
 
 const log = require("../util/log").createLogger("api-index");
+
 
 const getUserOpts = {
   schema: {
@@ -41,7 +42,7 @@ const getProductOpts = {
     querystring: {
       type: "object",
       properties: {
-        id: { type: "number" }
+        id: { type: "string" }
       },
       required: [ "id" ]
     }
@@ -58,36 +59,58 @@ const getProductOpts = {
   }
 };
 
+function hideFields(obj, fields) {
+  const newObj = {};
+  Object.keys(obj).forEach(key => {
+    if(fields.indexOf(key) === -1) {
+      newObj[key] = obj[key];
+    }
+  });
+  return newObj;
+}
+
 function addToApp(app) {
-  app.get('/api/v1/user', getUserOpts, function(req) {
-    return db.sequelize.models.User.findOne({
-      where: { username: req.query.username },
-      include: [{
-        model: db.sequelize.models.Product,
-        where: { 
-          displayPrice: {
-            [Op.not]: null,
-          },
-        },
-        attributes: {
-          exclude: [...PRODUCT_ALWAYS_EXCLUDE]
-        }
-      }],
-      attributes: {
-        exclude: [
-          'firstName', 'lastName', 'updatedAt', 'createdAt'
-        ],
-      },
-    })
+  app.get('/api/v1/user', getUserOpts, async function(req) {
+    const userQueryRef = await db
+      .collection(FB_COLLECTIONS.USERS)
+      .where('username', '==', req.query.username)
+      .get();
+    if(!userQueryRef.empty) {
+      const userRef = userQueryRef.docs[0];
+      const productsQueryRef = await db
+        .collection(FB_COLLECTIONS.PRODUCTS)
+        .where('userId', '==', userRef.id)
+        .get();
+      return {
+        user: hideFields(userRef.data(), ['firstName', 'lastName']),
+        products: productsQueryRef.docs.map(p => {
+          return {
+            id: p.id,
+            ...p.data(),
+          }
+        }),
+      }
+    } else {
+      const err = new Error();
+      err.statusCode = 404;
+      err.message = 'User not found';
+      throw err;
+    }
   });
 
-  app.get('/api/v1/product', getProductOpts, function(req) {
-    return db.sequelize.models.Product.findOne({
-      where: { id: req.query.id },
-      attributes: {
-        exclude: [...PRODUCT_ALWAYS_EXCLUDE]
-      }
-    });
+  app.get('/api/v1/product', getProductOpts, async function(req) {
+    const productQueryRef = await db
+      .collection(FB_COLLECTIONS.PRODUCTS)
+      .doc(req.query.id)
+      .get();
+    if(!productQueryRef.empty) {
+      return productQueryRef.data();
+    } else {
+      const err = new Error();
+      err.statusCode = 404;
+      err.message = 'Product not found';
+      throw err;
+    }
   });
 
   app.post('/api/v1/product/ozonSync', async function(req) {

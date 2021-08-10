@@ -5,8 +5,13 @@ if(PROD) {
 } else {
   DB_CONNECTION_STRING = "sqlite:db.sqlite3";
 }
+const FB_COLLECTIONS = {
+  PRODUCTS: !PROD ? "products-test" : "products",
+  USERS: !PROD ? "users-test" : "users",
+};
 
 module.exports = {
   PROD,
+  FB_COLLECTIONS,
   DB_CONNECTION_STRING,
 };
