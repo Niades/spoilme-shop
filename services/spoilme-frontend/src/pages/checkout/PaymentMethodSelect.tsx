@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
 import Visa from "../../assets/images/visa.png";
 import MC from "../../assets/images/mc.png";
-import Tinkoff from "../../assets/images/tinkoff.png";
 import PayPal from "../../assets/images/paypal.png";
 
 
@@ -87,7 +86,6 @@ const PaymentMethodCard = (props: PaymentMethodProps) => {
       <RadioIcon checked={active} />
       <CardIcon src={Visa} />
       <CardIcon src={MC} />
-      <CardIcon src={Tinkoff} />
     </PaymentMethodCardContainer>
   )
 }

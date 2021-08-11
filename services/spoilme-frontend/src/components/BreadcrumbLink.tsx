@@ -12,8 +12,10 @@ const BreadcrumbContainer = styled.div`
   position: absolute;
   top: 78px;
   left: 0;
-  width: 100vw;
+  width: 100%;
   background-color: #ECEFFD;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
 
   a {
     display: grid;

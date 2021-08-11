@@ -11,6 +11,7 @@ footer.contact-link: Контакты
 details.feature-name-manufacturer-country: 'Страна-производитель:'
 details.feature-value-manufacturer-country: Китай
 
+checkout.contacts-privacy-msg: "@{username} не будет иметь доступ к этим данным"
 checkout.your-order: Ваш заказ
 checkout.total: Итого
 checkout.payment-method: Способ оплаты

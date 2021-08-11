@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
+import { ReactComponent as LockIcon } from "../../assets/images/lock.svg";
 
 
 interface ContactsProps {
@@ -8,6 +9,7 @@ interface ContactsProps {
 
 const ContactsContainer = styled.div`
   margin: 15px;
+  position: relative;
 `;
 const ContactsTitle = styled.div`
   font-size: 18px;
@@ -19,7 +21,26 @@ const ContactsForm = styled.form`
 const FormRow = styled.div`
   margin: 7.5px 0;
 `;
-const RowLabel = styled.div``;
+const PrivacyMsg = styled.div`
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  color: #529A78;
+
+  >svg {
+    width: 15px;
+    height: 20px;
+    #lock {
+      fill: #529A78;
+    }
+  }
+
+  >span {
+    font-size: 14px;
+    align-self: center;
+  }
+`;
+const RowLabel = styled.label``;
 const RowField = styled.div`
   >input {
     width: 100%;
@@ -50,6 +71,16 @@ const Contacts = (props: ContactsProps) => {
           defaultMessage="Contact Information"
         />
       </ContactsTitle>
+      <PrivacyMsg>
+        <LockIcon />
+        <span>
+          <FormattedMessage
+            id="checkout.contacts-privacy-msg"
+            values={{ username: recipientUsername, }}
+            defaultMessage={`Never shared with @${recipientUsername}`}
+          />
+        </span>
+      </PrivacyMsg>
       <ContactsForm>
         <FormRow>
           <RowLabel>
@@ -71,19 +102,23 @@ const Contacts = (props: ContactsProps) => {
           </RowField>
         </FormRow>
         <FormRow>
-          <input type="checkbox" />
-          <FormattedMessage
-            id="checkout.tos-pp-agreement"
-            defaultMessage="I have read and agree to Terms of Service and Privacy Policy"
-          />
+          <input id="tos-pp-agreement" type="checkbox" />
+          <label htmlFor="tos-pp-agreement">
+            <FormattedMessage
+              id="checkout.tos-pp-agreement"
+              defaultMessage="I have read and agree to Terms of Service and Privacy Policy"
+            />
+          </label>
         </FormRow>
         <FormRow>
-          <input type="checkbox" />
-          <FormattedMessage
-            id="checkout.gift-purchase-agreement"
-            values={{ username: recipientUsername, }}
-            defaultMessage="I understand that this is a gift purchase for the user @{username}"
-          />
+          <input id="gift-agreement" type="checkbox" />
+          <label htmlFor="gift-agreement">
+            <FormattedMessage
+              id="checkout.gift-purchase-agreement"
+              values={{ username: recipientUsername, }}
+              defaultMessage="I understand that this is a gift purchase for the user @{username}"
+            />
+          </label>
         </FormRow>
         <PayButton>
           <FormattedMessage
