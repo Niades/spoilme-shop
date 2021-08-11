@@ -43,18 +43,22 @@ const ProductContainer = styled.div`
   }
 `;
 
-const ProductImage = styled.img`
+const ProductImageContainer = styled.div`
   grid-area: IMAGE;
   padding: 5px 3px;
   background-color: #FFF;
-  width: auto;
-  max-width: 100px;
   justify-self: center;
   align-self: center;
   border: 4px solid #DEE2FF;
   border-radius: 9px;
-  max-height: 100px;
-  height: auto;
+  width: 125px;
+  height: 125px;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
 `;
 
 const ProductImageSkeleton = styled.div`
@@ -68,6 +72,7 @@ const ProductTitle = styled.div`
   font-weight: 500;
   font-size: 18px;
   text-align: center;
+  align-self: center;
 `;
 
 const ProductPrice = styled.div`
@@ -137,7 +142,9 @@ const ProductBlock = (props: ProductBlockProps) => {
   const { locale } = useIntl();
   return (
     <ProductContainer>
-      <ProductImage src={prepareProductImageUrl(product.image)}/>
+      <ProductImageContainer>
+        <div style={{ backgroundImage: `url(${product.image})`, }} />
+      </ProductImageContainer>
       <ProductTitle>
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>
