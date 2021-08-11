@@ -32,4 +32,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik
-      - ./acme.json:/acme.json
+      - ./acme/acme.json:/acme.json
