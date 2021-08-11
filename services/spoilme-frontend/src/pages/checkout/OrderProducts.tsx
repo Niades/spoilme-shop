@@ -29,15 +29,21 @@ const OrderLineSkeletonContainer = styled(OrderLineContainer)`
   grid-template-rows: 100px;
 `;
 
-const ProductImage = styled.img`
+const ProductImageContainer = styled.div`
   overflow: hidden;
   grid-area: IMAGE;
-  min-width: 100px;
+  height: 100px;
   width: 100px;
   justify-self: center;
   border: 4px solid #DEE2FF;
   border-radius: 9px;
   align-self: center;
+
+  >div {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
 `;
 
 const ProductImageSkeleton = styled.div`
@@ -74,7 +80,9 @@ const OrderLine = (props: ProductBlockProps) => {
   const { product } = props;
   return (
     <OrderLineContainer>
-      <ProductImage src={prepareProductImageUrl(product.image)}/>
+      <ProductImageContainer>
+        <div style={{ backgroundImage: `url(${product.image})` }} />
+      </ProductImageContainer>
       <ProductTitle> 
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>

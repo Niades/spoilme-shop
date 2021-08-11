@@ -42,6 +42,7 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
   if(products === undefined || products.length === 0) {
     return undefined;
   } else {
+    console.log({products});
     return products
       .map(product => product.price)
       .reduce((total, current) => total + current, 0);
