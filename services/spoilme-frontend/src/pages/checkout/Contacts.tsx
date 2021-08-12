@@ -38,14 +38,24 @@ const PrivacyMsg = styled.div`
   >span {
     font-size: 14px;
     align-self: center;
+    padding-left: 5px;
   }
 `;
-const RowLabel = styled.label``;
+const RowLabel = styled.label`
+  display: inline-block;
+  margin-bottom: 5px;
+`;
 const RowField = styled.div`
   >input {
-    width: 100%;
+    display: block;
+    border: none;
+    border-radius: 9px;
+    padding: 5px 5px;
+    outline: none;
+    font-size: 18px;
     margin: 0;
-    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 `;
 
@@ -84,13 +94,13 @@ const Contacts = (props: ContactsProps) => {
       <ContactsForm>
         <FormRow>
           <RowLabel>
-            Email*
+            Email
           </RowLabel>
           <RowField>
-            <input type="text" />
+            <input placeholder="email@example.com" type="text" />
           </RowField>
         </FormRow>
-        <FormRow>
+        <FormRow style={{ display: "none" }}>
           <RowLabel>
             <FormattedMessage
               id="checkout.contact-info-phone"
@@ -103,22 +113,22 @@ const Contacts = (props: ContactsProps) => {
         </FormRow>
         <FormRow>
           <input id="tos-pp-agreement" type="checkbox" />
-          <label htmlFor="tos-pp-agreement">
+          <RowLabel htmlFor="tos-pp-agreement">
             <FormattedMessage
               id="checkout.tos-pp-agreement"
               defaultMessage="I have read and agree to Terms of Service and Privacy Policy"
             />
-          </label>
+          </RowLabel>
         </FormRow>
         <FormRow>
           <input id="gift-agreement" type="checkbox" />
-          <label htmlFor="gift-agreement">
+          <RowLabel htmlFor="gift-agreement">
             <FormattedMessage
               id="checkout.gift-purchase-agreement"
               values={{ username: recipientUsername, }}
               defaultMessage="I understand that this is a gift purchase for the user @{username}"
             />
-          </label>
+          </RowLabel>
         </FormRow>
         <PayButton>
           <FormattedMessage
