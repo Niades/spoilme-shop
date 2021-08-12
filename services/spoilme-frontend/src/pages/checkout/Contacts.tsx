@@ -50,9 +50,9 @@ const RowField = styled.div`
     display: block;
     border: none;
     border-radius: 9px;
-    padding: 5px 5px;
+    padding: 5px 10px;
     outline: none;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     width: 100%;
     box-sizing: border-box;
