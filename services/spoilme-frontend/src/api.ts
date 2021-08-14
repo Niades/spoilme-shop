@@ -8,11 +8,16 @@ if(process.env.NODE_ENV === "development") {
 }
 const API_PREFIX = "/api/v1/";
 
+export interface ProductPrice {
+  rub: number,
+  usd: number,
+}
+
 export interface Product {
   id: string,
   name_en: string,
   name_ru: string,
-  price: number,
+  price: ProductPrice,
   image: string,
 };
 

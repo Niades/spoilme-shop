@@ -20,7 +20,7 @@ let DETECTED_LOCALE = DEFAULT_LOCALE;
 if(SUPPORTED_LOCALES.indexOf(browserLanguage) !== -1) {
   DETECTED_LOCALE = browserLanguage;
 }
-const DEFAULT_CURRENCY = Currencies.USD;
+const DEFAULT_CURRENCY = DETECTED_LOCALE === "en" ? Currencies.USD : Currencies.RUB;
 
 export {
   DEFAULT_CURRENCY,

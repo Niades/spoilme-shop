@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { FormattedMessage } from "react-intl";
+import { ProductPrice } from "../../api";
+import { useFormatPrice } from "../../i18n/format";
+
 
 interface OrderTotalProps {
-  total: number|undefined,
+  total: ProductPrice|undefined,
 };
 
 const OrderTotalContainer = styled.div`
@@ -30,8 +33,8 @@ const OrderTotalContainer = styled.div`
   }
 `;
 
-
 const OrderTotal = (props: OrderTotalProps) => {
+  const formatPrice = useFormatPrice();
   const { total } = props;
   const skeleton = total === undefined;
   return (
@@ -47,9 +50,9 @@ const OrderTotal = (props: OrderTotalProps) => {
           <Skeleton variant="text" />
         </span>
       }
-      {!skeleton &&
+      {!skeleton && total !== undefined &&
         <span className="value">
-          ${total}
+          {formatPrice(total)}
         </span>
       }
     </OrderTotalContainer>

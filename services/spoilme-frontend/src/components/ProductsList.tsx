@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
 import { UserShowcaseURLParams } from "../pages/user-showcase";
 import { Product } from "../api";
-import * as format from "../i18n/format";
+import { useFormatPrice } from "../i18n/format";
 import { getI18nizedField } from "../i18n/util";
 
 
@@ -137,6 +137,7 @@ const ProductListContainer = styled.div`
 `;
 
 const ProductBlock = (props: ProductBlockProps) => {
+  const formatPrice = useFormatPrice();
   const { product } = props;
   const { username } = useParams<UserShowcaseURLParams>();
   const history = useHistory();
@@ -150,7 +151,7 @@ const ProductBlock = (props: ProductBlockProps) => {
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.price)}
+        {formatPrice(product.price)}
       </ProductPrice>
       <BuyButton onClick={() => history.push(`/${username}/gift/${product.id}/checkout`)}>
         <FormattedMessage 

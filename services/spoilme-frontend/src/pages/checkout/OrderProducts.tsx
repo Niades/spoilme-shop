@@ -3,7 +3,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { useIntl } from "react-intl";
 import { Product } from "../../api";
 import { getI18nizedField } from "../../i18n/util";
-import * as format from "../../i18n/format";
+import { useFormatPrice } from "../../i18n/format";
 
 
 interface ProductBlockProps {
@@ -77,6 +77,7 @@ const OrderProductsContainer = styled.div`
 `;
 
 const OrderLine = (props: ProductBlockProps) => {
+  const formatPrice = useFormatPrice();
   const { locale } = useIntl();
   const { product } = props;
   return (
@@ -88,7 +89,7 @@ const OrderLine = (props: ProductBlockProps) => {
         {getI18nizedField(product, "name", locale)}
       </ProductTitle>
       <ProductPrice>
-        {format.price(product.price)}
+        {formatPrice(product.price)}
       </ProductPrice>
     </OrderLineContainer>
   )

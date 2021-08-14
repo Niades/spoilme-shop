@@ -38,13 +38,13 @@ const OrderForm = styled.div`
   padding: 1px 0;
 `;
 
-function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
+function calcTotalFromProducts(products: Product[]|undefined):api.ProductPrice|undefined {
   if(products === undefined || products.length === 0) {
     return undefined;
   } else {
     return products
       .map(product => product.price)
-      .reduce((total, current) => total + current, 0);
+      .reduce((total, current) => ({ usd: total.usd + current.usd, rub: total.rub + current.rub}), {usd: 0, rub: 0,});
   }
 };
 
