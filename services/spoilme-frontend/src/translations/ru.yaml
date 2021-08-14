@@ -19,7 +19,14 @@ checkout.shipping-address: Адрес доставки
 checkout.shipping-address-verified: Подтверждённый адрес @{username}
 checkout.contact-info: Ваши контакты
 checkout.contact-info-phone: Телефон
+checkout.message-title: Сообщение <span>(необязательно)</span>
 checkout.message-placeholder: Введите сообщение для @{username} и мы передадим его вместе с подарком
 checkout.tos-pp-agreement: Я принимаю Публичную оферту и Политику конфиденциальности
 checkout.gift-purchase-agreement: Я понимаю, что совершаю покупку в подарок пользователю @{username}
 checkout.pay-button: Оплатить
+
+home.title: Принимайте подарки от своих поклонников
+home.step1: "1. Создайте свой список желаемого"
+home.step2: "2. Поделитесь ссылкой на него"
+home.step3: "3. Принимайте подарки!"
+home.invite-only-msg: Сейчас регистрация только по приглашениям. Оставьте свой email в поле ниже, чтобы узнать, когда мы откроемся для всех желающих.

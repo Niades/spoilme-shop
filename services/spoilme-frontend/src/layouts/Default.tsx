@@ -107,19 +107,19 @@ const Footer = React.memo(() => {
       <FooterLink>
         <FormattedMessage
           id="footer.tos-link"
-          defaultMessage="terms of service"
+          defaultMessage="Public Offer"
         />
       </FooterLink>
       <FooterLink>
         <FormattedMessage
           id="footer.pp-link"
-          defaultMessage="privacy policy"
+          defaultMessage="Privacy Policy"
         />
       </FooterLink>
       <FooterLink>
         <FormattedMessage
           id="footer.contact-link"
-          defaultMessage="contact us"
+          defaultMessage="Contact Us"
         />
       </FooterLink>
     </FooterContainer>

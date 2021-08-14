@@ -146,7 +146,13 @@ const Contacts = (props: ContactsProps) => {
         </FormRow>
         <FormRow>
           <RowLabel>
-            Message <span>(optional)</span>
+            <FormattedMessage
+              id="checkout.message-title"
+              defaultMessage="Message <span>(optional)</span>"
+              values={{
+                span: (chunks: any) => <span>{chunks}</span>
+              }}
+            />
           </RowLabel>
           <RowField>
             <textarea 
