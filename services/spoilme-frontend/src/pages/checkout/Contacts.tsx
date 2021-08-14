@@ -1,10 +1,20 @@
 import styled from "@emotion/styled";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { ReactComponent as LockIcon } from "../../assets/images/lock.svg";
 
 
+export interface ContactsValue {
+  email: string,
+  legalAgreed: boolean,
+  sanityAgreed: boolean,
+  message: string|undefined,
+};
+
 interface ContactsProps {
   recipientUsername: string,
+  value: ContactsValue,
+  onChange: (newValue: ContactsValue) => void,
+  onPay: () => void,
 }
 
 const ContactsContainer = styled.div`
@@ -46,7 +56,9 @@ const RowLabel = styled.label`
   margin-bottom: 5px;
 `;
 const RowField = styled.div`
-  >input {
+  >input, >textarea {
+    max-width: 670px;
+    font-family: inherit;
     display: block;
     border: none;
     border-radius: 9px;
@@ -60,6 +72,7 @@ const RowField = styled.div`
 `;
 
 const PayButton = styled.button`
+  cursor: pointer;
   margin-top: 15px; 
   color: white;
   font-size: 20px;
@@ -69,10 +82,32 @@ const PayButton = styled.button`
   background-color: #83B692;
   border-radius: 20px;
   width: 100%;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
+const validate = (value: ContactsValue) => {
+  // validate email
+  if(value.email === "") {
+    return false;
+  }
+  // validate legal agreement
+  if(!value.legalAgreed) {
+    return false;
+  }
+  // validate sanity check
+  if(!value.sanityAgreed) {
+    return false;
+  }
+  return true;
+};
+
 const Contacts = (props: ContactsProps) => {
-  const { recipientUsername } = props;
+  const { recipientUsername, value, onChange, onPay } = props;
+  const intl = useIntl();
+  const canPay = validate(value);
   return (
     <ContactsContainer>
       <ContactsTitle>
@@ -91,13 +126,33 @@ const Contacts = (props: ContactsProps) => {
           />
         </span>
       </PrivacyMsg>
-      <ContactsForm>
+      <ContactsForm onSubmit={(e) => {
+        e.preventDefault();
+        onPay();
+      }}>
         <FormRow>
           <RowLabel>
             Email
           </RowLabel>
           <RowField>
-            <input placeholder="email@example.com" type="text" />
+            <input 
+              placeholder="email@example.com"
+              type="text"
+              value={value.email}
+              onChange={(e) => onChange({...value, email: e.target.value})}
+            />
+          </RowField>
+        </FormRow>
+        <FormRow>
+          <RowLabel>
+            Message <span>(optional)</span>
+          </RowLabel>
+          <RowField>
+            <textarea 
+              placeholder={intl.formatMessage({ id: "checkout.message-placeholder" }, { username: recipientUsername })}
+              value={value.message}
+              onChange={(e) => onChange({...value, message: e.target.value})}
+            />
           </RowField>
         </FormRow>
         <FormRow style={{ display: "none" }}>
@@ -112,7 +167,12 @@ const Contacts = (props: ContactsProps) => {
           </RowField>
         </FormRow>
         <FormRow>
-          <input id="tos-pp-agreement" type="checkbox" />
+          <input 
+            id="tos-pp-agreement"
+            type="checkbox"
+            checked={value.legalAgreed}
+            onChange={(e) => onChange({ ...value, legalAgreed: e.target.checked})}
+          />
           <RowLabel htmlFor="tos-pp-agreement">
             <FormattedMessage
               id="checkout.tos-pp-agreement"
@@ -121,7 +181,12 @@ const Contacts = (props: ContactsProps) => {
           </RowLabel>
         </FormRow>
         <FormRow>
-          <input id="gift-agreement" type="checkbox" />
+          <input
+            id="gift-agreement"
+            type="checkbox"
+            checked={value.sanityAgreed}
+            onChange={(e) => onChange({ ...value, sanityAgreed: e.target.checked})}
+          />
           <RowLabel htmlFor="gift-agreement">
             <FormattedMessage
               id="checkout.gift-purchase-agreement"
@@ -130,7 +195,7 @@ const Contacts = (props: ContactsProps) => {
             />
           </RowLabel>
         </FormRow>
-        <PayButton>
+        <PayButton disabled={!canPay}>
           <FormattedMessage
             id="checkout.pay-button"
             defaultMessage="Pay"

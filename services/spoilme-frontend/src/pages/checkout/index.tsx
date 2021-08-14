@@ -10,7 +10,7 @@ import { OrderProducts } from "./OrderProducts";
 import { OrderTotal } from "./OrderTotal";
 import { PaymentMethodSelect } from "./PaymentMethodSelect";
 import { ShippingAddress } from "./ShippingAddress";
-import { Contacts } from "./Contacts";
+import { Contacts, ContactsValue } from "./Contacts";
 import { Product } from "../../api";
 
 interface OrderURLParams {
@@ -42,16 +42,20 @@ function calcTotalFromProducts(products: Product[]|undefined):number|undefined {
   if(products === undefined || products.length === 0) {
     return undefined;
   } else {
-    console.log({products});
     return products
       .map(product => product.price)
       .reduce((total, current) => total + current, 0);
   }
 };
 
+const submitPaymentForm = (data: object) => {
+  console.log({data});
+};
+
 const Checkout = () => {
   const [pm, setPm] = useState("card");
   const [products, setProducts] = useState<Product[]|undefined>(undefined)
+  const [contacts, setContacts] = useState<ContactsValue>({ email: "", message: "", legalAgreed: false, sanityAgreed: false });
   const {username, productId} = useParams<OrderURLParams>();
   const total = calcTotalFromProducts(products);
   useEffect(() => {
@@ -88,7 +92,12 @@ const Checkout = () => {
           value={pm}
         />
         <Separator />
-        <Contacts recipientUsername={username} />
+        <Contacts
+          recipientUsername={username}
+          value={contacts}
+          onChange={(newContacts) => setContacts(newContacts)}
+          onPay={() => submitPaymentForm({...contacts, username, productId, pm})}
+        />
       </OrderForm>
     </Container>
   );

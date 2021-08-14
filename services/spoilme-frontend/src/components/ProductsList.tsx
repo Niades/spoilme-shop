@@ -7,7 +7,6 @@ import { UserShowcaseURLParams } from "../pages/user-showcase";
 import { Product } from "../api";
 import * as format from "../i18n/format";
 import { getI18nizedField } from "../i18n/util";
-import { prepareProductImageUrl } from "../util/urlHelper";
 
 
 interface ProductBlockProps {
@@ -57,7 +56,9 @@ const ProductImageContainer = styled.div`
   > div {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `;
 

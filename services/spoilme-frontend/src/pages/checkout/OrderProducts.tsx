@@ -4,7 +4,6 @@ import { useIntl } from "react-intl";
 import { Product } from "../../api";
 import { getI18nizedField } from "../../i18n/util";
 import * as format from "../../i18n/format";
-import { prepareProductImageUrl } from "../../util/urlHelper";
 
 
 interface ProductBlockProps {
@@ -42,7 +41,9 @@ const ProductImageContainer = styled.div`
   >div {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `;
 

@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { FormattedMessage } from "react-intl";
 import GlobeUrl from "../../assets/images/how-it-works/globe.jpg";
 import ProblemsUrl from "../../assets/images/how-it-works/problems.jpg";
 import SolutionUrl from "../../assets/images/how-it-works/solution.jpg";
@@ -16,8 +15,6 @@ const TextIllustration = styled.img`
   max-width: 100%;
   max-height: 300px;
 `;
-
-const DEFAULT_CONTENT = "";
 
 const HowItWorks = () => {
   return (

@@ -9,7 +9,6 @@ import * as api from "../../api";
 import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 import { Separator } from "../../components/Separator";
 import { ScrollToTop } from "../../components/ScrollToTop";
-import { prepareProductImageUrl } from "../../util/urlHelper";
 
 
 interface ProductDetailsParams {
@@ -147,7 +146,7 @@ const Details = (props: DetailsProps) => {
         <ProductImage>
           <img 
             alt="Product"
-            src={prepareProductImageUrl(product.image)}
+            src={product.image}
           />
         </ProductImage>
         <ProductName>
