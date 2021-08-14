@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context as I18nContext } from "../i18n/context";
 import { ProductPrice } from "../api";
-import { Currencies, DEFAULT_CURRENCY, DEFAULT_LOCALE } from "./index";
+import { Currencies } from "./index";
 
 const ruRUBNumberFormat = new Intl.NumberFormat(
   "ru-RU",

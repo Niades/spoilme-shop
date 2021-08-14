@@ -36,7 +36,7 @@ const Home = () => {
           />
         </p>
         <p style={{ textAlign: "center", }}>
-          <img style={{ margin: "0 auto", width: "100%", maxWidth: "400px", }} src={Illustration} />
+          <img style={{ margin: "0 auto", width: "100%", maxWidth: "400px", }} src={Illustration} alt="pic" />
         </p>
         <p>
           <FormattedMessage

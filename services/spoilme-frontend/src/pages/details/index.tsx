@@ -3,14 +3,12 @@ import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useParams, useHistory } from "react-router-dom";
-import { Context as I18nContext } from "../../i18n/context";
 import { getI18nizedField } from "../../i18n/util";
 import { useFormatPrice } from "../../i18n/format";
 import * as api from "../../api";
 import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 import { Separator } from "../../components/Separator";
 import { ScrollToTop } from "../../components/ScrollToTop";
-import { useContext } from "react";
 
 
 interface ProductDetailsParams {
