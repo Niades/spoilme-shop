@@ -28,6 +28,7 @@ const Nav = styled.nav`
 `;
 
 const LogoContainer = styled.div`
+  cursor: pointer;
   position: relative;
   padding: 25px 0;
 `;
@@ -74,7 +75,7 @@ const Container = (props: ContainerProps) => {
 
 const Logo = React.memo(() => {
   return (
-    <LogoContainer>
+    <LogoContainer onClick={() => window.location.href = "/"}>
       <LogoImage 
         src={LogoUrl}
         alt="Logo"
