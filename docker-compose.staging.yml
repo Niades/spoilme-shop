@@ -2,6 +2,8 @@ version: "3.9"
 services:
   backend:
     build: "./services/spoilme-backend/"
+    environment:
+      - STAGING=1
     labels:
       - traefik.enable=true
       - traefik.http.routers.backend.rule=(Host(`staging.spoilme.shop`)&&PathPrefix(`/api`))
