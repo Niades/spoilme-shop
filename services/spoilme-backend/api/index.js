@@ -82,7 +82,7 @@ function addToApp(app) {
         .where('userId', '==', userRef.id)
         .get();
       return {
-        user: hideFields(userRef.data(), ['firstName', 'lastName']),
+        user: hideFields(userRef.data(), ['lastName']),
         products: productsQueryRef.docs.map(p => {
           return {
             id: p.id,

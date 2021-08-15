@@ -22,6 +22,7 @@ export interface Product {
 };
 
 export interface UserInfo {
+  firstName: string,
   username: string,
   profileDescription: string,
   profilePic: string,

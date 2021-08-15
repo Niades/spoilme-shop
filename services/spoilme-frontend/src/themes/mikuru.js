@@ -1,6 +1,6 @@
 const theme = {
   color: {
-    header: '#FFEBF2',
+    header: '#DDE0FF',
   },
 };
 

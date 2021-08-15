@@ -11,6 +11,7 @@ export interface UserShowcaseURLParams {
 };
 
 interface User {
+  firstName: string|undefined,
   username: string|undefined,
   profileDescription: string|undefined,
   profilePic: string,
@@ -22,6 +23,7 @@ interface UserInfoState {
 };
 
 const Container = styled.div`
+  padding-top: 20px;
   @media (min-width: 650px) {
     max-width: 720px;
     margin: 0 auto;
@@ -41,6 +43,7 @@ function UserShowcase() {
     <Container>
       <ProfileHeader
         username={username}
+        name={userInfo?.user.firstName}
         description={userInfo?.user.profileDescription}
         profilePic={userInfo?.user.profilePic}
       />

@@ -29,7 +29,7 @@ const SwitchContainer = styled.div`
 const CurrentLangContainer = styled.div`
   position: relative;
   cursor: pointer;
-  background-color: #DEE2FF;
+  background-color: #FFFFFF;
   padding: 3px 5px;
   border-radius: 9px;
   z-index: 3;
