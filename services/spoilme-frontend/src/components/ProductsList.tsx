@@ -32,7 +32,7 @@ const ProductListContainer = styled.div`
     grid-template-columns: 0.33fr 0.33fr 0.33fr;
     background-color: #FFFFFF;
     border-radius: 20px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
   }
 `;
