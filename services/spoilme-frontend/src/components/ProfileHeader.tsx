@@ -37,6 +37,7 @@ const AvatarContainer = styled.div`
   >div {
     width: 100%;
     height: 100%;
+    background-color: white;
     background-position: center;
     background-size: cover;
   }
