@@ -6,9 +6,10 @@ import { Provider as I18nProvider } from "./i18n/context";
 import './assets/styles/global.css';
 import App from './App';
 import MikuruTheme from './themes/mikuru';
+import { GA_ENABLED } from "./constants";
 import { initGA } from "./analytics";
 
-if(window.location.host === "spoilme.shop") {
+if(GA_ENABLED) {
   initGA();
 }
 

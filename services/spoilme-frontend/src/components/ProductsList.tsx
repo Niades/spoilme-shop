@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { useHistory, useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
+import { GA_ENABLED } from "../constants";
 import { UserShowcaseURLParams } from "../pages/user-showcase";
 import { Product } from "../api";
 import { useFormatPrice } from "../i18n/format";
@@ -179,13 +180,25 @@ const ProductBlock = (props: ProductBlockProps) => {
       <ProductPrice>
         {formatPrice(product.price)}
       </ProductPrice>
-      <BuyButton onClick={() => history.push(`/${username}/gift/${product.id}/checkout`)}>
+      <BuyButton onClick={() =>  {
+        if(GA_ENABLED) {
+          // @ts-ignore
+          window.dataLayer.push({'event': 'click_buy_button', 'event_detail': 'list'});
+        }
+        history.push(`/${username}/gift/${product.id}/checkout`);
+      }}>
         <FormattedMessage 
           id="common.buy-button"
           defaultMessage="Gift Now"
         />
       </BuyButton>
-      <DetailsButton onClick={() => history.push(`/${username}/gift/${product.id}`)}>
+      <DetailsButton onClick={() => {
+        if(GA_ENABLED) {
+          // @ts-ignore
+          window.dataLayer.push({'event': 'click_product_detail' });
+        }
+        history.push(`/${username}/gift/${product.id}`);
+      }}>
         <FormattedMessage 
           id="showcase.details-button"
           defaultMessage="Details"

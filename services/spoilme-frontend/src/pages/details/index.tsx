@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useParams, useHistory } from "react-router-dom";
+import { GA_ENABLED } from "../../constants";
 import { getI18nizedField } from "../../i18n/util";
 import { useFormatPrice } from "../../i18n/format";
 import * as api from "../../api";
@@ -211,7 +212,13 @@ const ProductDetails = () => {
       {product !== undefined &&
         <Details 
           product={product}
-          onBuyClick={() => history.push(`/${username}/gift/${productId}/checkout`)}
+          onBuyClick={() => {
+            if(GA_ENABLED) {
+              // @ts-ignore
+              window.dataLayer.push({'event': 'click_buy_button', 'event_detail': 'product_detail'});
+            }
+            history.push(`/${username}/gift/${productId}/checkout`);
+          }}
         />
       }
     </Container>

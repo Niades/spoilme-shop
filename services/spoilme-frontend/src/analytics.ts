@@ -6,7 +6,7 @@ const GA_APP_ID = "spoilme.shop";
 const GTM_CONTAINER_ID = "GTM-K6V82TF"
 
 function initGA() {
-  const analytics = Analytics({
+  Analytics({
     app: GA_APP_ID,
     plugins: [
       googleTagManager({
