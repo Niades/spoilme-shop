@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import Skeleton from "@material-ui/lab/Skeleton";
-import MikuruAvatar from "../assets/images/mikuru.jpeg";
 
 
 interface ProfileHeaderProps {
   username: string,
   description: string|undefined,
+  profilePic: string|undefined,
 };
 
 const Container = styled.div`
@@ -25,13 +25,21 @@ const Container = styled.div`
   }
 `;
 
-const Avatar = styled.img`
+const AvatarContainer = styled.div`
   position: absolute;
   top: -10px;
   width: 125px;
   height: 125px;
   border-radius: 75px;
   border: 4px solid white;
+  overflow: hidden;
+
+  >div {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
 `;
 
 const AvatarPlaceholder = styled.div`
@@ -53,11 +61,13 @@ const Description = styled.div`
 `;
 
 const ProfileHeader = (props: ProfileHeaderProps) => {
-  const { username, description } = props;
+  const { username, description, profilePic } = props;
   return (
     <Container>
       <AvatarPlaceholder />
-      <Avatar alt={`@${username}'s avatar`} src={MikuruAvatar}/>
+      <AvatarContainer>
+        <div style={{ backgroundImage: `url(${profilePic})` }} />
+      </AvatarContainer>
       <UsernameTitle>
         @{username}
       </UsernameTitle>

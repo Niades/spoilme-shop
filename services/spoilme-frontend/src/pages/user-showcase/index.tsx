@@ -13,6 +13,7 @@ export interface UserShowcaseURLParams {
 interface User {
   username: string|undefined,
   profileDescription: string|undefined,
+  profilePic: string,
 };
 
 interface UserInfoState {
@@ -41,6 +42,7 @@ function UserShowcase() {
       <ProfileHeader
         username={username}
         description={userInfo?.user.profileDescription}
+        profilePic={userInfo?.user.profilePic}
       />
       <ProductList 
         products={userInfo?.products}

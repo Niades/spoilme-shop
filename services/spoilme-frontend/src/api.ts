@@ -24,6 +24,7 @@ export interface Product {
 export interface UserInfo {
   username: string,
   profileDescription: string,
+  profilePic: string,
 };
 
 export interface UserInfoResult {
