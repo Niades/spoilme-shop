@@ -51,21 +51,22 @@ const PrivacyMsg = styled.div`
     padding-left: 5px;
   }
 `;
+
 const RowLabel = styled.label`
-  display: inline-block;
   margin-bottom: 5px;
 `;
+
 const RowField = styled.div`
   >input, >textarea {
+    margin: 5px 0;
     max-width: 670px;
     font-family: inherit;
     display: block;
-    border: none;
+    border: 1px solid #000;
     border-radius: 9px;
     padding: 5px 10px;
     outline: none;
     font-size: 16px;
-    margin: 0;
     width: 100%;
     box-sizing: border-box;
   }
@@ -183,7 +184,7 @@ const Contacts = (props: ContactsProps) => {
           <RowLabel htmlFor="tos-pp-agreement">
             <FormattedMessage
               id="checkout.tos-pp-agreement"
-              defaultMessage="I have read and agree to Terms of Service and Privacy Policy"
+              defaultMessage="I have read and accept the Public Offer and Privacy Statement"
             />
           </RowLabel>
         </FormRow>

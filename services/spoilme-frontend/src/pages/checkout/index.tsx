@@ -32,8 +32,9 @@ const OrderTitle = styled.div`
 `;
 
 const OrderForm = styled.div`
-  background-color: #DEE2FF;
+  background-color: #FFFFFF;
   border-radius: 20px;
+  box-shadow: 0px 18px 80px rgba(0, 0, 0, 0.1);
   margin: 15px 0;
   padding: 1px 0;
 `;

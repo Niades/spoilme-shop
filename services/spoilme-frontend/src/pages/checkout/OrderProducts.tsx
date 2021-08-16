@@ -34,8 +34,7 @@ const ProductImageContainer = styled.div`
   height: 100px;
   width: 100px;
   justify-self: center;
-  border: 4px solid #DEE2FF;
-  border-radius: 9px;
+  border-radius: 20px;
   align-self: center;
 
   >div {

@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
 import { LanguageSwitch } from "../components/LanguageSwitch";
 import LogoUrl from "../assets/images/logo.png";
+// @ts-ignore
+import PublicOfferUrl from "../assets/public-offer.pdf";
 
 
 interface ContainerProps {
@@ -53,7 +55,8 @@ const FooterContainer = styled.div`
   text-align: center;
 `;
 
-const FooterLink = styled.div`
+const FooterLink = styled.a`
+  display: block;
   cursor: pointer;
   padding: 10px 0;
 `;
@@ -104,7 +107,7 @@ const Header = React.memo(() => {
 const Footer = React.memo(() => {
   return (
     <FooterContainer>
-      <FooterLink>
+      <FooterLink target="_blank" href={PublicOfferUrl}>
         <FormattedMessage
           id="footer.tos-link"
           defaultMessage="Public Offer"

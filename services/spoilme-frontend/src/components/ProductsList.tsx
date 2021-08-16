@@ -85,7 +85,7 @@ const ProductImageContainer = styled.div`
   > div {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
