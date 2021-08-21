@@ -84,7 +84,7 @@ const Logo = React.memo(() => {
         alt="Logo"
       />
       <LogoText>
-        SpoilMeShop
+        SpoilMe
       </LogoText>
     </LogoContainer>
   );
