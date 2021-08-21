@@ -110,10 +110,10 @@ const PaymentMethodSelect = (props: PaymentMethodSelectProps) => {
           defaultMessage="Payment Method"
         />
       </PaymentMethodsTitle>
-      <PaymentMethodCard 
+      { false && <PaymentMethodCard 
         active={value === "card"}
         onClick={onChange}
-      />
+      /> }
       <PaymentMethodPayPal
         active={value === "paypal"}
         onClick={onChange}

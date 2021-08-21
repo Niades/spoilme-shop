@@ -1710,6 +1710,13 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@paypal/paypal-js@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@paypal/paypal-js/-/paypal-js-4.0.7.tgz#6a53160a20b760de5d516c86a653610a72fc4a03"
+  integrity sha512-//olmjveITwSVtpihdfFlvCBuBMQcLlPV4lfYb/vxS2wRD0HKi1m5euakyXrcmXc/zvphnwVp5NeQZKXC/izeg==
+  dependencies:
+    promise-polyfill "^8.2.0"
+
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.3.tgz#1eec460596d200c0236bf195b078a5d1df89b766"
@@ -9296,6 +9303,11 @@ promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
+
+promise-polyfill@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-8.2.0.tgz#367394726da7561457aba2133c9ceefbd6267da0"
+  integrity sha512-k/TC0mIcPVF6yHhUvwAp7cvL6I2fFV7TzF1DuGPI8mBh4QQazf36xCKEHKTZKRysEoTQoQdKyP25J8MPJp7j5g==
 
 promise@^8.1.0:
   version "8.1.0"

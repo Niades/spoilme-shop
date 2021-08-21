@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
+import { loadScript } from "@paypal/paypal-js";
 import { Separator } from "../../components/Separator";
 import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 import * as api from "../../api";
@@ -12,6 +13,8 @@ import { PaymentMethodSelect } from "./PaymentMethodSelect";
 import { ShippingAddress } from "./ShippingAddress";
 import { Contacts, ContactsValue } from "./Contacts";
 import { Product } from "../../api";
+
+const PP_CLIENT_ID = "AVDBY70eOdceECzQNSZGaZp53yOcF7hAwHubwTOoYKGgxBjsLkJKkIaZtQ0RN6dCs8NSXa9NxcXS8mP0";
 
 interface OrderURLParams {
   username: string,
@@ -54,7 +57,7 @@ const submitPaymentForm = (data: object) => {
 };
 
 const Checkout = () => {
-  const [pm, setPm] = useState("card");
+  const [pm, setPm] = useState("paypal");
   const [products, setProducts] = useState<Product[]|undefined>(undefined)
   const [contacts, setContacts] = useState<ContactsValue>({ email: "", message: "", legalAgreed: false, sanityAgreed: false });
   const {username, productId} = useParams<OrderURLParams>();
@@ -62,6 +65,33 @@ const Checkout = () => {
   useEffect(() => {
     api.getProductInfo(productId).then((product) => setProducts([product]))
   }, [productId]);
+  /* PayPal Buttons (now disabled)
+  useEffect(() => {
+    loadScript({'client-id': PP_CLIENT_ID})
+      .then((paypal) => {
+        if(paypal !== null) {
+          // @ts-ignore
+          paypal.Buttons({
+            createOrder: (_, actions) => { 
+              return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [{
+                  amount: {
+                    value: "100",
+                  },
+                }],
+                application_context: {
+                  shipping_preference: "NO_SHIPPING",
+                },
+              });
+            }
+          }).render("#pp-test");
+        } else {
+          console.error("failed to initialize paypal")
+        }
+      });
+  }, []);
+  */
   return (
     <Container>
       <ScrollToTop /> 
@@ -88,10 +118,10 @@ const Checkout = () => {
       <OrderForm>
         <ShippingAddress verifiedBy={username} />
         <Separator />
-        <PaymentMethodSelect 
+        {false && <PaymentMethodSelect 
           onChange={(pm) => setPm(pm)}
           value={pm}
-        />
+        />}
         <Separator />
         <Contacts
           recipientUsername={username}

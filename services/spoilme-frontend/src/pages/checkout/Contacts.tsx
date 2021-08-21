@@ -115,7 +115,7 @@ const Contacts = (props: ContactsProps) => {
       <ContactsTitle>
         <FormattedMessage
           id="checkout.contact-info"
-          defaultMessage="Contact Information"
+          defaultMessage="Payment Information"
         />
       </ContactsTitle>
       <PrivacyMsg>
@@ -203,6 +203,7 @@ const Contacts = (props: ContactsProps) => {
             />
           </RowLabel>
         </FormRow>
+        {false && <div style={{ marginTop: "30px", }} id="pp-test"></div>}
         <PayButton disabled={!canPay}>
           <FormattedMessage
             id="checkout.pay-button"
