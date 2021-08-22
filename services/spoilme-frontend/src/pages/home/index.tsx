@@ -1,19 +1,51 @@
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
 import PhoneImg from "../../assets/images/landing-phone-only.png";
-import Illustration from "../../assets/images/how-it-works/gift-delivered.jpg";
+import BraceletsImg from "../../assets/images/bracelets.png";
+import SneakersImg from "../../assets/images/sneakers.png";
+import LouieBagImg from "../../assets/images/louie-bag.png";
+
 
 const Container = styled.div`
   margin-top: 20px;
   padding: 0 20px;
+  overflow-x: hidden;
 `;
 
 const PhoneWrapper = styled.div`
+  position: relative;
   text-align: center;
 
-  img {
+  img.phone {
+    position: relative;
     width: 245px;
     height: 474px;
+    z-index: 3;
+  }
+
+  img.bracelets {
+    position: absolute;
+    width: 138px;
+    height: 185px;
+    left: 208px;
+    top: 0px;
+    z-index: 4;
+  }
+
+  img.sneakers {
+    position: absolute;
+    width: 168.3px;
+    left: 200px;
+    top: 200px;
+    z-index: 2;
+  }
+
+  img.louie-bag {
+    position: absolute;
+    z-index: 4;
+    top: 225px;
+    left: -33px;
+    width: 245px;
   }
 `;
 
@@ -48,7 +80,7 @@ const MarkerOL = styled.span`
 `;
 
 const EmailForm = styled.form`
-  margin-top: 30px;
+  margin: 30px 0 30px;
   text-align: center;
   padding: 15px 20px;
   border-radius: 20px;
@@ -84,7 +116,10 @@ const Home = () => {
           />
         </Title>
         <PhoneWrapper>
-          <img src={PhoneImg} />
+          <img className="phone" src={PhoneImg} />
+          <img className="bracelets" src={BraceletsImg} />
+          <img className="sneakers" src={SneakersImg} />
+          <img className="louie-bag" src={LouieBagImg} />
         </PhoneWrapper>
         <StepsOL>
           <li>
@@ -116,7 +151,7 @@ const Home = () => {
               defaultMessage="Registration is now invite-only. Enter your email below to be notified when it opens."
             />
           </p>
-          <EmailInput id="email" placeholder="" />
+          <EmailInput id="email" type="email" placeholder="" />
           <SendBtn>
             <FormattedMessage
               id="home.send-btn"
