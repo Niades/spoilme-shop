@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "@emotion/styled";
 import { FormattedMessage } from "react-intl";
-import { loadScript } from "@paypal/paypal-js";
+// import { loadScript } from "@paypal/paypal-js";
 import { Separator } from "../../components/Separator";
 import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 import * as api from "../../api";
@@ -14,7 +14,7 @@ import { ShippingAddress } from "./ShippingAddress";
 import { Contacts, ContactsValue } from "./Contacts";
 import { Product } from "../../api";
 
-const PP_CLIENT_ID = "AVDBY70eOdceECzQNSZGaZp53yOcF7hAwHubwTOoYKGgxBjsLkJKkIaZtQ0RN6dCs8NSXa9NxcXS8mP0";
+// const PP_CLIENT_ID = "AVDBY70eOdceECzQNSZGaZp53yOcF7hAwHubwTOoYKGgxBjsLkJKkIaZtQ0RN6dCs8NSXa9NxcXS8mP0";
 
 interface OrderURLParams {
   username: string,
