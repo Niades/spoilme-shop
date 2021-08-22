@@ -10,11 +10,35 @@ const Container = styled.div`
   margin-top: 20px;
   padding: 0 20px;
   overflow-x: hidden;
+
+  @media (min-width: 650px) {
+    overflow-x: initial;
+  }
+`;
+
+const HomeArticle = styled.article`
+  @media (min-width: 650px) {
+    display: grid;
+    grid-template-columns: 335px 30px 1fr;
+    grid-template-areas:
+      'PHN SPC TTL' 
+      'PHN SPC STP'
+      'PHN SPC FRM'
+    ;
+  }
 `;
 
 const PhoneWrapper = styled.div`
   position: relative;
   text-align: center;
+  max-width: 335px;
+  margin: 0 auto;
+
+  @media (min-width: 650px) {
+    grid-area: PHN;
+    margin: auto;
+    align-self: center;
+  }
 
   img.phone {
     position: relative;
@@ -27,7 +51,7 @@ const PhoneWrapper = styled.div`
     position: absolute;
     width: 138px;
     height: 185px;
-    left: 208px;
+    left: 65%;
     top: 0px;
     z-index: 4;
   }
@@ -35,8 +59,8 @@ const PhoneWrapper = styled.div`
   img.sneakers {
     position: absolute;
     width: 168.3px;
-    left: 200px;
-    top: 200px;
+    left: 57%;
+    top: 45%;
     z-index: 2;
   }
 
@@ -44,7 +68,7 @@ const PhoneWrapper = styled.div`
     position: absolute;
     z-index: 4;
     top: 225px;
-    left: -33px;
+    left: -32%;
     width: 245px;
   }
 `;
@@ -55,10 +79,19 @@ const Title = styled.h2`
   margin: 0 auto 10px;
   max-width: 187px;
   text-align: center;
+
+  @media (min-width: 650px) {
+    grid-area: TTL;
+    max-width: 240px;
+  }
 `;
 
 const StepsOL = styled.ol`
   list-style: none;
+
+  @media (min-width: 650px) {
+    grid-area: STP;
+  }
 
   li {
     margin-bottom: 10px;
@@ -85,6 +118,10 @@ const EmailForm = styled.form`
   padding: 15px 20px;
   border-radius: 20px;
   box-shadow: 0px 18px 80px rgba(0, 0, 0, 0.1);
+  
+  @media (min-width: 650px) {
+    grid-area: FRM;
+  }
 `;
 
 const EmailInput = styled.input`
@@ -108,7 +145,7 @@ const SendBtn = styled.button`
 const Home = () => {
   return (
     <Container>
-      <article>
+      <HomeArticle>
         <Title>
           <FormattedMessage
             id="home.title"
@@ -116,10 +153,10 @@ const Home = () => {
           />
         </Title>
         <PhoneWrapper>
-          <img className="phone" src={PhoneImg} />
-          <img className="bracelets" src={BraceletsImg} />
-          <img className="sneakers" src={SneakersImg} />
-          <img className="louie-bag" src={LouieBagImg} />
+          <img className="phone" alt="phone" src={PhoneImg} />
+          <img className="bracelets" alt="bracelets" src={BraceletsImg} />
+          <img className="sneakers" alt="sneakers" src={SneakersImg} />
+          <img className="louie-bag" alt="handbag" src={LouieBagImg} />
         </PhoneWrapper>
         <StepsOL>
           <li>
@@ -159,7 +196,7 @@ const Home = () => {
             />
           </SendBtn>
         </EmailForm>
-      </article>
+      </HomeArticle>
     </Container>
   );
 };
