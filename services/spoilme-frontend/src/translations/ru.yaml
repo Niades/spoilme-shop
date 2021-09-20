@@ -6,7 +6,8 @@ showcase.details-button: О товаре
 
 footer.tos-link: Публичная оферта
 footer.pp-link: Политика конфиденциальности
-footer.contact-link: Контакты
+footer.about-link: О компании
+footer.faq-link: Вопросы и ответы
 
 details.feature-name-manufacturer-country: 'Страна-производитель:'
 details.feature-value-manufacturer-country: Китай

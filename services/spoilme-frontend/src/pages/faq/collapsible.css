@@ -1,0 +1,13 @@
+.Collapsible {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.Collapsible__trigger {
+    display: block;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: #DDE0FF;
+    font-size: 16px;
+    font-weight: 600;
+}

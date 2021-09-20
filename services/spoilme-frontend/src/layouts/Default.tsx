@@ -113,9 +113,15 @@ const Footer = React.memo(() => {
           defaultMessage="Public Offer"
         />
       </FooterLink>
-      <FooterLink>
+      <FooterLink href="/faq">
         <FormattedMessage
-          id="footer.contact-link"
+          id="footer.faq-link"
+          defaultMessage="FAQ"
+        />
+      </FooterLink>
+      <FooterLink href="/about-us">
+        <FormattedMessage
+          id="footer.about-link"
           defaultMessage="About Us"
         />
       </FooterLink>
