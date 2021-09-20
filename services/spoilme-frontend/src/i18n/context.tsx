@@ -3,6 +3,8 @@ import { IntlProvider } from "react-intl";
 import { MESSAGES, DETECTED_LOCALE, DEFAULT_CURRENCY, Currencies } from "./index";
 
 
+const LOCALE_LS_KEY = 'locale_ls_afg8934f';
+
 interface ProviderProps {
   children: ReactNode,
 };
@@ -17,8 +19,17 @@ const Context = React.createContext<ContextValue>({
   currency: DEFAULT_CURRENCY,
 });
 
+function persistLocale(locale: string) {
+  localStorage.setItem(LOCALE_LS_KEY, locale);
+};
+
+function readPersistedLocale(): string|null {
+  return localStorage.getItem(LOCALE_LS_KEY);
+}
+
 const Provider = (props: ProviderProps) => {
   function selectLanguage(newLocale: string) {
+      persistLocale(newLocale);
       setLocale(newLocale);
       setMessages(MESSAGES[newLocale]);
       if(newLocale === "en") {
@@ -27,7 +38,8 @@ const Provider = (props: ProviderProps) => {
         setCurrency(Currencies.RUB);
       }
   };
-  const [locale, setLocale] = useState(DETECTED_LOCALE);
+  const persistedLocale = readPersistedLocale();
+  const [locale, setLocale] = useState(persistedLocale === null ? DETECTED_LOCALE : persistedLocale);
   const [messages, setMessages] = useState<Record<string, string>>(MESSAGES[locale]);
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
 

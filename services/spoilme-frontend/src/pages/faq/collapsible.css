@@ -1,10 +1,10 @@
 .Collapsible {
-    cursor: pointer;
     margin-top: 10px;
 }
 
 .Collapsible__trigger {
     display: block;
+    cursor: pointer;
     border-radius: 20px;
     padding: 5px 10px;
     background-color: #DDE0FF;
