@@ -1,6 +1,11 @@
 ---
 common.buy-button: Купить подарок
 common.back-to-wishlist: Назад к списку желаний @{username}
+common.back-to-home: На главную
+
+about.sole-proprietor: ИП Половинкин Даниил Алексеевич
+about.address: 'Юридический адрес: 302016, Россия, Орловская область, гор. Орёл, ш. Карачевское, д. 2, кв. 52'
+about.working-hours: пн-пт c 09:00 до 17:00 MSK
 
 showcase.details-button: О товаре
 

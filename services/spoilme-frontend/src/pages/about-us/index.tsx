@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FormattedMessage } from "react-intl";
 import { BreadcrumbLink } from "../../components/BreadcrumbLink";
 
 const Wrapper = styled.div`
@@ -13,14 +14,28 @@ const AboutUs = () => {
   return (
     <Wrapper>
       <BreadcrumbLink to="/">
-        На главную
+        <FormattedMessage
+          id="common.back-to-home"
+        />
       </BreadcrumbLink>
       <h1>SpoilMe.shop</h1>
-      <p>ИП Половинкин Даниил Алексеевич</p>
-      <p>Юридический адрес: 302016, Россия, Орловская область, гор. Орёл, ш. Карачевское, д. 2, кв. 52</p>
+      <p>
+        <FormattedMessage
+          id="about.sole-proprietor"
+        />
+      </p>
+      <p>
+        <FormattedMessage
+          id="about.address"
+        />
+      </p>
       <p>☎️ <a className="contact" href="tel:+79534750586">+7(953)475-05-86</a></p>
       <p>📧 <a className="contact" href="mailto:hello@spoilme.shop">hello@spoilme.shop</a></p>
-      <p>пн-пт c 09:00 до 17:00 MSK</p>
+      <p>
+        <FormattedMessage
+          id="about.working-hours"
+        />
+      </p>
     </Wrapper>
   );
 };
