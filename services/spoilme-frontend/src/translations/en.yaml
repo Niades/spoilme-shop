@@ -5,3 +5,16 @@ about.address: 'Address: 302016, Russia, Orlovskaya oblast, Orel, Karachevskoye 
 about.working-hours: Monday - Friday, 09:00am to 05:00pm (Moscow Time)
 
 checkout.message-placeholder: Write a message to @{username} and we will send it to them along with the gift
+
+faq.title: Frequently Asked Questions
+faq.q-shipping-when: When will my order be shipped?
+faq.a-shipping-when: All orders are shipped ship in 2 to 4 business days after the payment has been received.
+faq.q-shipping-time: How long does the shipping take?
+faq.a-shipping-time: Shipping usually takes 2 to 4 business days,
+                    however maximum shipping time is 14 days.
+faq.q-refunds: How can I get a refund?
+faq.a-refunds: Within 24 hours after payment is completed, you can 
+              cancel your order and get a full refund minus  
+              payment processing services fees.
+              If you would like to get a refund, write to us at 📧<a>hello@spoilme.shop</a> 
+              with the subject "Refund". Your refund request will be processed in 1 business day.
