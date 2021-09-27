@@ -2,6 +2,7 @@ common.back-to-home: Back to home
 
 about.sole-proprietor: Sole Proprietor Polovinkin Daniil Alekseevich
 about.address: 'Address: 302016, Russia, Orlovskaya oblast, Orel, Karachevskoye shosse, 2, 52'
+about.ogrnip: 'OGRNIP: 32157 49000 04357'
 about.working-hours: Monday - Friday, 09:00am to 05:00pm (Moscow Time)
 
 checkout.message-placeholder: Write a message to @{username} and we will send it to them along with the gift
